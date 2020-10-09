@@ -1,8 +1,7 @@
 ﻿namespace BookDiary.DAL.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class CreateUsersTable : DbMigration
     {
         public override void Up()

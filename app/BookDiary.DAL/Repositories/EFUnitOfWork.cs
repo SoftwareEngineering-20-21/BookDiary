@@ -1,11 +1,7 @@
-﻿/*using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BookDiary.DAL.Interfaces;
+﻿using BookDiary.DAL.EF;
 using BookDiary.DAL.Entities;
-using BookDiary.DAL.EF;
+using BookDiary.DAL.Interfaces;
+using System;
 
 namespace BookDiary.DAL.Repositories
 {
@@ -53,4 +49,4 @@ namespace BookDiary.DAL.Repositories
             GC.SuppressFinalize(this);
         }
     }
-}*/
+}

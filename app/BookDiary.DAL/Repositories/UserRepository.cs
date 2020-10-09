@@ -1,11 +1,9 @@
-﻿/*using System;
+﻿using BookDiary.DAL.EF;
+using BookDiary.DAL.Entities;
+using BookDiary.DAL.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BookDiary.DAL.Interfaces;
-using BookDiary.DAL.Entities;
-using BookDiary.DAL.EF;
 
 namespace BookDiary.DAL.Repositories
 {
@@ -50,4 +48,4 @@ namespace BookDiary.DAL.Repositories
                 db.Users.Remove(user);
         }
     }
-}*/
+}
