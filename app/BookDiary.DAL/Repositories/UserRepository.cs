@@ -2,6 +2,7 @@
 using BookDiary.DAL.Entities;
 using BookDiary.DAL.Interfaces;
 using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 
