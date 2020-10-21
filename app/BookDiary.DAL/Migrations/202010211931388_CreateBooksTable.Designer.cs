@@ -13,7 +13,7 @@ namespace BookDiary.DAL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202010201846193_CreateBooksTable"; }
+            get { return "202010211931388_CreateBooksTable"; }
         }
         
         string IMigrationMetadata.Source

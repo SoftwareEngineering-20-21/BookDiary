@@ -138,9 +138,9 @@
     <Compile Include="Migrations\202010081320214_CreateUsersTable.designer.cs">
       <DependentUpon>202010081320214_CreateUsersTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202010201846193_CreateBooksTable.cs" />
-    <Compile Include="Migrations\202010201846193_CreateBooksTable.designer.cs">
-      <DependentUpon>202010201846193_CreateBooksTable.cs</DependentUpon>
+    <Compile Include="Migrations\202010211931388_CreateBooksTable.cs" />
+    <Compile Include="Migrations\202010211931388_CreateBooksTable.designer.cs">
+      <DependentUpon>202010211931388_CreateBooksTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -157,8 +157,8 @@
     <EmbeddedResource Include="Migrations\202010081320214_CreateUsersTable.resx">
       <DependentUpon>202010081320214_CreateUsersTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010201846193_CreateBooksTable.resx">
-      <DependentUpon>202010201846193_CreateBooksTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010211931388_CreateBooksTable.resx">
+      <DependentUpon>202010211931388_CreateBooksTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -10,10 +10,9 @@ namespace BookDiary.DAL.Entities
         Completed,
         Planned
     }
+
     public class Book : AbstractEntity
     {
-        
-
         public BookStatus Status { get; set; }
 
         [Required]
@@ -29,6 +28,11 @@ namespace BookDiary.DAL.Entities
         [Required]
         public int TotalPages { get; set; }
 
+        [Required]
         public int UserId { get; set; }
+
+        [Required]
+        [ForeignKey("UserId")]
+        public User User { get; set; }
     }
 }
