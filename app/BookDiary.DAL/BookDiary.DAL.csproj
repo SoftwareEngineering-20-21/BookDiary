@@ -130,7 +130,6 @@
   <ItemGroup>
     <Compile Include="Abstractions\AbstractEntity.cs" />
     <Compile Include="EF\AppDbContext.cs" />
-    <Compile Include="Entities\Statistic.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
