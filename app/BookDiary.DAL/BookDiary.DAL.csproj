@@ -130,13 +130,17 @@
   <ItemGroup>
     <Compile Include="Abstractions\AbstractEntity.cs" />
     <Compile Include="EF\AppDbContext.cs" />
-    <Compile Include="Entities\Statistic.cs" />
+    <Compile Include="Entities\Book.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Migrations\202010081320214_CreateUsersTable.cs" />
     <Compile Include="Migrations\202010081320214_CreateUsersTable.designer.cs">
       <DependentUpon>202010081320214_CreateUsersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010211931388_CreateBooksTable.cs" />
+    <Compile Include="Migrations\202010211931388_CreateBooksTable.designer.cs">
+      <DependentUpon>202010211931388_CreateBooksTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -152,6 +156,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202010081320214_CreateUsersTable.resx">
       <DependentUpon>202010081320214_CreateUsersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010211931388_CreateBooksTable.resx">
+      <DependentUpon>202010211931388_CreateBooksTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
