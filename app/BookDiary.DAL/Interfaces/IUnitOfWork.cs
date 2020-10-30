@@ -3,7 +3,7 @@ using System;
 
 namespace BookDiary.DAL.Interfaces
 {
-    interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         IRepository<User> Users { get; }
         IRepository<Book> Books { get; }
