@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using BookDiary.BLL.DTO;
 
 namespace BookDiary.BLL.Interfaces
@@ -9,9 +9,8 @@ namespace BookDiary.BLL.Interfaces
         UserDTO GetUser(int? Id);
         void CreateUser(UserDTO userDTO);
         void UpdateUser(UserDTO userDTO);
-        void DeleteUSer(UserDTO userDTO);
-
-        
+        void DeleteUser(UserDTO userDTO);
+        IEnumerable<UserDTO> GetUsers();
 
     }
 }
