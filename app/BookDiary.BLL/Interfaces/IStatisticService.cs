@@ -4,13 +4,13 @@ using BookDiary.BLL.DTO;
 
 namespace BookDiary.BLL.Interfaces
 {
-    class IStatisticService
+    public interface IStatisticService
     {
         void CreateStatistic(StatisticDTO statisticDTO);
-        void UpdateBook(BookDTO bookDTO);
-        void DeleteBook(BookDTO bookDTO);
-        BookDTO GetBook(int? id);
-        IEnumerable<BookDTO> GetBooks();
-        IEnumerable<BookDTO> GetBooksByUserId(int? userId);
+        void UpdateStatistic(StatisticDTO statisticDTO);
+        void DeleteStatistic(StatisticDTO statisticDTO);
+        StatisticDTO GetStatistic(int? id);
+        IEnumerable<StatisticDTO> GetStatistics();
+        IEnumerable<StatisticDTO> GetStatisticsByBookId(int? bookId);
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace BookDiary.BLL.DTO
 {
-    class StatisticDTO
+    public class StatisticDTO
     {
         public int Id { get; set; }
         public DateTimeOffset Day { get; set; }
