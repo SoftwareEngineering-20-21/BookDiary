@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pl"
         mc:Ignorable="d"
-        Title="BookPage" Height="450" Width="800">
+        Title="BookPage" Height="450" Width="350">
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Left" Height="380" Margin="26,20,0,0" VerticalAlignment="Top" Width="288">
+            <StackPanel HorizontalAlignment="Left" Height="135" Width="288">
+                <Image Source="resource/7.png" Height="131" Margin="10,0,16,0"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left" Height="245" Width="288">
+                <TextBox Height="18" TextWrapping="Wrap" TextAlignment="Left" FontSize="16" FontFamily="Arial" FontWeight="ExtraBold" IsReadOnly="True" BorderThickness="0" Text="Book 1" Margin="0,20,176,0"/>
+                <Grid Height="206">
+                    <TextBox Height="23" TextWrapping="Wrap" FontSize="13" FontFamily="Arial" IsReadOnly="True" BorderThickness="0" Text="Total number of pages" Margin="10,10,143,173"/>
+                    <TextBox Height="23"  FontSize="13" FontFamily="Arial" IsReadOnly="True" BorderThickness="0" Margin="198,15,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" TextAlignment="Center" Width="80"/>
+                    <TextBox Height="23" TextWrapping="Wrap" FontSize="13" FontFamily="Arial" IsReadOnly="True" BorderThickness="0" Text="Number of read pages" Margin="10,33,143,150"/>
+                    <TextBox Height="23"  FontSize="13" FontFamily="Arial" IsReadOnly="True" BorderThickness="0" Margin="203,38,5,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" TextAlignment="Center" Width="80"/>
+                    <TextBox Height="23" TextWrapping="Wrap" FontSize="13" FontFamily="Arial" IsReadOnly="True" BorderThickness="0" Text="Today read pages" Margin="10,56,143,127"/>
+                    <TextBox Height="23"  FontSize="13" FontFamily="Arial" IsReadOnly="True" BorderThickness="0" Margin="203,61,5,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" TextAlignment="Center" Width="80"/>
+                    <TextBox Height="23" TextWrapping="Wrap" FontSize="13" FontFamily="Arial" IsReadOnly="True" BorderThickness="0" Text="Review" Margin="10,79,143,104"/>
+                    <TextBox TextWrapping="Wrap" FontSize="13"  VerticalScrollBarVisibility="Visible"  FontFamily="Arial" IsReadOnly="True" BorderThickness="0" Text="...." Margin="10,102,10,45"/>
+                    <Button HorizontalAlignment="Left" Margin="0,171,0,0" VerticalAlignment="Top" Width="34" Height="35">
+                        <Image Source="resource/1.png"></Image>
+                    </Button>
+                    <Button  HorizontalAlignment="Left" Margin="39,171,0,0" VerticalAlignment="Top" Width="34" Height="35">
+                        <Image Source="resource/10.png"></Image>
+                    </Button>
+                    <Button  HorizontalAlignment="Left" Margin="78,171,0,0" VerticalAlignment="Top" Width="34" Height="35" RenderTransformOrigin="2.441,0.371">
+                        <Image Source="resource/11.png"></Image>
+                    </Button>
+                    <Button Content="Edit" FontWeight="Bold" FontSize="14" HorizontalAlignment="Left" Height="35" Margin="135,171,0,0" VerticalAlignment="Top" Width="72"/>
+                    <Button Content="Save" FontWeight="Bold" FontSize="14" Foreground="White" Background="Black"  HorizontalAlignment="Left" Height="35" Margin="216,171,0,0" VerticalAlignment="Top" Width="72"/>
+                </Grid>
+            </StackPanel>
+
+        </StackPanel>
+
     </Grid>
 </Window>
