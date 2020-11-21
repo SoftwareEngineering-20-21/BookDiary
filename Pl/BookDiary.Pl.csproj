@@ -146,5 +146,17 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resource\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resource\7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resource\10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resource\11.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
