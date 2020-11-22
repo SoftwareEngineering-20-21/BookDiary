@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pl"
         mc:Ignorable="d"
-        Title="NotificationsPage" Height="450" Width="800">
+        Title="NotificationsPage" Height="450" Width="400">
     <Grid>
-        
+        <Label Content="Enter book title:" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" IsReadOnly="False" Height="27" Margin="129,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="253"/>
+        <Label Content="Number of pages to read:" FontSize="15" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" IsReadOnly="False" Height="27" Margin="195,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="47"/>
+        <Rectangle Fill="LightGray" HorizontalAlignment="Left" Height="3" Margin="11,89,0,0"  VerticalAlignment="Top" Width="371" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.033"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Viewbox Margin="62,121,62,71">
+            <Calendar/>
+        </Viewbox>
+        <Button Content="Set" FontWeight="Bold" FontSize="14" BorderThickness="0" HorizontalAlignment="Left" Margin="291,367,0,0" VerticalAlignment="Top" Width="80" Height="33"/>
     </Grid>
 </Window>
