@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookDiary.Pl"
         mc:Ignorable="d"
-        Title="HomePage" Height="600" Width="1050"
+        Title="HomePage" Height="600" Width="1000"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
 
@@ -13,6 +13,7 @@
             <Setter Property="FontFamily" Value="Times New Roman"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
         </Style>
 
         <Style x:Key="Status" TargetType="Button">
@@ -37,34 +38,32 @@
             </Setter>
         </Style>
 
+        <ControlTemplate x:Key="CoolButton" TargetType="{x:Type Button}">
+            <Border 
+                    Margin="{TemplateBinding Margin}"
+                    Background="{TemplateBinding Background}" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    Padding="{TemplateBinding Padding}">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </ControlTemplate>
+
         <Style x:Key="Page" TargetType="Button">
-            <Setter Property="Width" Value="150"/>
+            <Setter Property="Width" Value="Auto"/>
             <Setter Property="FontFamily" Value="Times New Roman"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Background" Value="White"/>
             <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border 
-                                Margin="{TemplateBinding Margin}"
-                                Background="{TemplateBinding Background}" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}" 
-                                Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Template" Value="{StaticResource CoolButton}"/>
         </Style>
 
         <Style x:Key="SignInUp" TargetType="Button">
-            <Setter Property="Width" Value="80"/>
+            <Setter Property="Width" Value="60"/>
             <Setter Property="Height" Value="30"/>
             <Setter Property="FontFamily" Value="Times New Roman"/>
-            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontSize" Value="14"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -83,6 +82,33 @@
             </Setter>
         </Style>
 
+        <Style x:Key="AddButton" TargetType="Button">
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Content" Value="Add a book"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border 
+                                Margin="{TemplateBinding Margin}"
+                                Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                Padding="{TemplateBinding Padding}"
+                                CornerRadius="20">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+                
+
     </Window.Resources>
     
     <Grid>
@@ -90,15 +116,17 @@
             <RowDefinition Height="20"></RowDefinition>
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="20"></RowDefinition>
-            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="20"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"></ColumnDefinition>
-            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
             <ColumnDefinition Width="20"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
             <ColumnDefinition Width="20"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
@@ -106,14 +134,14 @@
                 Style="{StaticResource Standart}"
                 FontWeight="Bold"
                 Grid.Row="1" Grid.Column="1" 
-                FontSize="50"
+                FontSize="40"
                 Text="BooksDiary" 
         />
 
         <Grid
                 Grid.Row="3" Grid.Column="1">
             <Border 
-                    Width="250" Height="30"  
+                    Width="200" Height="30"  
                     CornerRadius="20" 
                     BorderBrush="Black" BorderThickness="1">
                 <TextBox  
@@ -121,16 +149,18 @@
                         VerticalAlignment="Center" HorizontalAlignment="Center" 
                         BorderThickness="0"  
                         FontFamily="Times New Roman" FontSize="14"
-                        Width="230"
+                        Width="190"
+                        KeyDown="SearchTextBox_KeyDown"
                 />
             </Border>
             <TextBlock 
                     VerticalAlignment="Center" HorizontalAlignment="Center"
+                    TextAlignment="Center"
                     IsHitTestVisible="False" 
                     Text="Search a book"
                     Foreground="DimGray"
                     FontFamily="Times New Roman" FontSize="14"
-                    Width="80">
+                    Width="190">
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -162,12 +192,12 @@
                     MouseLeave="ButtonAll_MouseLeave"
             />
             <Button
-                    x:Name="ButtonToRead"
+                    x:Name="ButtonPlanned"
                     Style="{StaticResource Status}"
-                    Content="  To Read"
-                    Click="ButtonToRead_Click"
-                    MouseEnter="ButtonToRead_MouseEnter"
-                    MouseLeave="ButtonToRead_MouseLeave"
+                    Content="  Planned"
+                    Click="ButtonPlanned_Click"
+                    MouseEnter="ButtonPlanned_MouseEnter"
+                    MouseLeave="ButtonPlanned_MouseLeave"
             />
             <Button
                     x:Name="ButtonInProgress"
@@ -178,37 +208,55 @@
                     MouseLeave="ButtonInProgress_MouseLeave"
             />
             <Button
-                    x:Name="ButtonDone"
+                    x:Name="ButtonCompleted"
                     Style="{StaticResource Status}"
-                    Content="  Done"
-                    Click="ButtonDone_Click"
-                    MouseEnter="ButtonDone_MouseEnter"
-                    MouseLeave="ButtonDone_MouseLeave"
+                    Content="  Completed"
+                    Click="ButtonCompleted_Click"
+                    MouseEnter="ButtonCompleted_MouseEnter"
+                    MouseLeave="ButtonCompleted_MouseLeave"
             />
         </StackPanel>
 
-        <StackPanel
-                Grid.Row="1" Grid.Column="3"
-                Orientation="Horizontal">
+        <Grid
+                Grid.Row="1" Grid.Column="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel 
+                    Grid.Column="0"/>
             <Button 
                     x:Name="ButtonHome"
+                    Grid.Column="1"
                     Style="{StaticResource Page}"
                     Content="Home"
+                    Background="LightGray"
             />
             <Button 
                     x:Name="ButtonNotifications"
+                    Grid.Column="2"
                     Style="{StaticResource Page}"
                     Content="Notifications"
+                    Click="ButtonNotifications_Click"
+                    MouseEnter="ButtonNotifications_MouseEnter"
+                    MouseLeave="ButtonNotifications_MouseLeave"
             />
             <Button 
                     x:Name="ButtonStatistics"
                     Style="{StaticResource Page}"
+                    Grid.Column="3"
                     Content="Statistics"
+                    Click="ButtonStatistics_Click"
+                    MouseEnter="ButtonStatistics_MouseEnter"
+                    MouseLeave="ButtonStatistics_MouseLeave"
             />
-            <StackPanel 
-                    Orientation="Horizontal"
-                    Width="20"
-            />
+        </Grid>
+        
+        <StackPanel 
+                Orientation="Horizontal"
+                Grid.Row="1" Grid.Column="5">
             <Button 
                     x:Name="ButtonSignIn"
                     Style="{StaticResource SignInUp}"
@@ -218,10 +266,7 @@
                     Content="Sing in"
                     Click="ButtonSignIn_Click"
             />
-            <StackPanel 
-                    Orientation="Horizontal"
-                    Width="20"
-            />
+            <StackPanel Width="10"/>
             <Button 
                     x:Name="ButtonSignUp"
                     Style="{StaticResource SignInUp}"
@@ -229,27 +274,47 @@
                     Foreground="White"
                     BorderBrush="White"
                     Content="Sing up"
-                    Click="ButtonSignIn_Click"
+                    Click="ButtonSignUp_Click"
             />
-            <StackPanel 
-                    Orientation="Horizontal"
-                    Width="20"
+            <StackPanel Width="10"/>
+            <Image 
+                    Source="resource/user-icon.png" 
+                    Height="50"
             />
-            <Image>
-                
-            </Image>
-
-
-
-
         </StackPanel>
-        
 
+        <Grid
+                Grid.Row="3" Grid.Column="3"
+                Background="LightGray">
+            <Button 
+                    x:Name="AddBook"
+                    Style="{StaticResource AddButton}" 
+                    Click="AddBook_Click"
+            />
+        </Grid>
+        <!--
+        <Grid 
+                Grid.Row="3" Grid.Column="5">
+            <Button
+                    HorizontalAlignment="Left"
+                    Height="30"
+                    BorderThickness="0"
+                    Background="White"
+                    Template="{StaticResource CoolButton}">
+                <Image Source="resource/delete-icon.png"/>
+            </Button>
+        </Grid>
+        -->
+        <ScrollViewer
+                Grid.Row="5" Grid.Column="3"
+                Grid.ColumnSpan="3">
 
+            <WrapPanel
+                    x:Name="booksWrap"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal">
 
-
-
-
-
+            </WrapPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

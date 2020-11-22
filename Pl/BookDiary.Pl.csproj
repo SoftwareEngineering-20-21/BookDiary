@@ -158,5 +158,23 @@
   <ItemGroup>
     <Resource Include="resource\11.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resource\user-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resource\delete-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resource\done-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resource\book-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\app\BookDiary.DAL\BookDiary.DAL.csproj">
+      <Project>{945bb00f-c22e-46ec-b7f9-49eaf15718d0}</Project>
+      <Name>BookDiary.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
