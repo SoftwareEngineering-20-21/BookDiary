@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pl"
         mc:Ignorable="d"
-        Title="AddBookPage" Height="450" Width="800">
+        Title="AddBookPage" Height="300" Width="800">
     <Grid>
-        
+        <Label Content="Enter book title:" FontSize="18" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="159"/>
+        <TextBox HorizontalAlignment="Left" Height="22" Margin="10,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="284" RenderTransformOrigin="-1.554,2.182"/>
+        <Label Content="Enter author name:" FontSize="18" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Width="174" RenderTransformOrigin="0.44,2.919"/>
+        <TextBox HorizontalAlignment="Left" Height="22" Margin="10,104,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="284" RenderTransformOrigin="-1.554,2.182"/>
+        <Label Content="Enter number of pages:" FontSize="18" FontFamily="Arial" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.44,2.919"/>
+        <TextBox HorizontalAlignment="Left" Height="22" Margin="10,167,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="284" RenderTransformOrigin="-1.554,2.182"/>
+        <Button HorizontalAlignment="Left" Background="White" BorderThickness="0" Margin="10,217,0,0" VerticalAlignment="Top" Width="40" Height="40">
+            <Image Source="resource/1.png"></Image>
+        </Button>
+        <Button HorizontalAlignment="Left" Background="White" BorderThickness="0" Margin="64,217,0,0" VerticalAlignment="Top" Width="40" Height="40">
+            <Image Source="resource/10.png"></Image>
+        </Button>
+        <Button Content="Done" FontSize="18" FontFamily="Arial" BorderThickness="0" HorizontalAlignment="Left" Margin="356,217,0,0" VerticalAlignment="Top" Width="126" Height="30"/>
     </Grid>
 </Window>
