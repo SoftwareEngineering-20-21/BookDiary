@@ -50,20 +50,20 @@ namespace BookDiary.Pl
                 Book book2 = new Book();
                 book2.Status = BookStatus.Completed;
                 book2.Title = "Knyzka2";
-                book1.Author = "Chuvak2";
-                book1.TotalPages = 273;
+                book2.Author = "Chuvak2";
+                book2.TotalPages = 273;
 
                 Book book3 = new Book();
                 book3.Status = BookStatus.Planned;
                 book3.Title = "Knyzka3";
-                book1.Author = "Chuvak3";
-                book1.TotalPages = 0;
+                book3.Author = "Chuvak3";
+                book3.TotalPages = 0;
 
                 Book book4 = new Book();
                 book4.Status = BookStatus.InProgress;
                 book4.Title = "Knyzka4";
-                book1.Author = "Chuvak4";
-                book1.TotalPages = 1000;
+                book4.Author = "Chuvak4";
+                book4.TotalPages = 1000;
 
                 BooksAll.Add(book1);
                 BooksAll.Add(book2);
@@ -252,11 +252,8 @@ namespace BookDiary.Pl
 
         private void AddBook_Click(object sender, RoutedEventArgs e)
         {
-            /*
             AddBookPage ab = new AddBookPage();
             ab.Show();
-            this
-            */
         }
 
         private void SearchTextBox_DragEnter(object sender, DragEventArgs e)
@@ -354,7 +351,7 @@ namespace BookDiary.Pl
             if (book.Status == BookStatus.Completed)
             {
                 Image isCompleted = new Image();
-                isCompleted.Source = new BitmapImage(new Uri("resource/done-icon.png", UriKind.Relative));
+                isCompleted.Source = new BitmapImage(new Uri("resource/done-icon-3.png", UriKind.Relative));
                 isCompleted.HorizontalAlignment = HorizontalAlignment.Center;
                 isCompleted.VerticalAlignment = VerticalAlignment.Center;
                 isCompleted.HorizontalAlignment = HorizontalAlignment.Center;

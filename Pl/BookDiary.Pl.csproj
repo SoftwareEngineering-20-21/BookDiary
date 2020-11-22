@@ -176,5 +176,11 @@
       <Name>BookDiary.DAL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resource\done-icon-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resource\done-icon-3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
