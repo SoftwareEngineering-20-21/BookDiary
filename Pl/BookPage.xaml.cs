@@ -17,7 +17,18 @@ namespace BookDiary.Pl
             totalPages.Text = Convert.ToString(book.TotalPages);
             author.Text = book.Author;
             /// INITIALIZATE A BOOK !!!!!!!!
+            
 
+        }
+
+        private void DeleteBook_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void StatisticBook_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

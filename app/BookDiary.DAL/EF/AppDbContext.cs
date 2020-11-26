@@ -11,6 +11,8 @@ namespace BookDiary.DAL.EF
 
         public DbSet<Statistic> Statistics { get; set; }
 
+        public DbSet<Notification> Notifications { get; set; }
+
         public AppDbContext() : base("DefaultConnection") { }
 
         public AppDbContext(string connectionString) : base(connectionString) { }

@@ -45,7 +45,7 @@ namespace BookDiary.BLL.Services
                 statistic.Day = statisticDto.Day;
                 statistic.OldPages = statisticDto.OldPages;
                 statistic.NewPages = statisticDto.NewPages;
-                statistic.BookId = statisticDto.BookId;
+                Database.Statistics.Update(statistic);
             }
 
             Database.Save();

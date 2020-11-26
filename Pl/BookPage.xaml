@@ -45,13 +45,13 @@
                     <TextBlock x:Name="todayReadPages" Style="{StaticResource Standart}"  Margin="199,114,0.333,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" TextAlignment="Center" Width="80"/>
                     <TextBlock Style="{StaticResource Standart}"  Text="Review" Margin="10,147,134.373,36"/>
                     <TextBox x:Name="Review" FontSize="14" VerticalScrollBarVisibility="Visible"  FontFamily="Times New Roman" IsReadOnly="True" BorderThickness="0" Text="...." Margin="10,0,1.373,45" Height="100" VerticalAlignment="Bottom"/>
-                    <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="34" Height="35">
-                        <Image Source="resource/1.png"/>
+                    <Button HorizontalAlignment="Left" Click="DeleteBook_Click" Background="White" VerticalAlignment="Bottom" BorderThickness="0" Width="34" Height="35">
+                        <Image Source="resource/delete-icon.png" Height="31" Width="29"/>
                     </Button>
-                    <Button  HorizontalAlignment="Left" Margin="39,0,0,0" VerticalAlignment="Bottom" Width="34" Height="35">
+                    <Button  HorizontalAlignment="Left" Margin="39,0,0,0" Background="White" BorderThickness="0" VerticalAlignment="Bottom" Width="34" Height="35">
                         <Image Source="resource/10.png"/>
                     </Button>
-                    <Button  HorizontalAlignment="Left" Margin="78,0,0,0" VerticalAlignment="Bottom" Width="34" Height="35" RenderTransformOrigin="2.441,0.371">
+                    <Button  HorizontalAlignment="Left" Click="StatisticBook_Click" Background="White" BorderThickness="0" Margin="78,0,0,0" VerticalAlignment="Bottom" Width="34" Height="35" RenderTransformOrigin="2.441,0.371">
                         <Image Source="resource/11.png"/>
                     </Button>
                     <Button Content="Edit" FontWeight="Bold" FontSize="14" Height="35" Margin="131,0,76.373,0" VerticalAlignment="Bottom" RenderTransformOrigin="-0.634,0.466"/>
