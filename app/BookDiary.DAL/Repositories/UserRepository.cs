@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace BookDiary.DAL.Repositories
 {
-    class UserRepository : IRepository<User>
+    public class UserRepository : IRepository<User>
     {
         private AppDbContext db;
 

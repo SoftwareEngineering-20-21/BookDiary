@@ -5,7 +5,7 @@ using System;
 
 namespace BookDiary.DAL.Repositories
 {
-    class EFUnitOfWork : IUnitOfWork
+    public class EFUnitOfWork : IUnitOfWork
     {
         private AppDbContext db;
         private UserRepository userRepository;
