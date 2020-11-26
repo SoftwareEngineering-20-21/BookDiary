@@ -7,18 +7,18 @@ namespace BookDiary.DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class CreateNotificationsTable : IMigrationMetadata
+    public sealed partial class CreateNotificationTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateNotificationsTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateNotificationTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202011261845305_CreateNotificationsTable"; }
+            get { return "202011261959189_CreateNotificationTable"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

@@ -145,17 +145,9 @@
     <Compile Include="Migrations\202010081320214_CreateUsersTable.designer.cs">
       <DependentUpon>202010081320214_CreateUsersTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202010211931388_CreateBooksTable.cs" />
-    <Compile Include="Migrations\202010211931388_CreateBooksTable.designer.cs">
-      <DependentUpon>202010211931388_CreateBooksTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011261845305_CreateNotificationsTable.cs" />
-    <Compile Include="Migrations\202011261845305_CreateNotificationsTable.designer.cs">
-      <DependentUpon>202011261845305_CreateNotificationsTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011261849156_CreateNotificationsTable1.cs" />
-    <Compile Include="Migrations\202011261849156_CreateNotificationsTable1.designer.cs">
-      <DependentUpon>202011261849156_CreateNotificationsTable1.cs</DependentUpon>
+    <Compile Include="Migrations\202011261959189_CreateNotificationTable.cs" />
+    <Compile Include="Migrations\202011261959189_CreateNotificationTable.designer.cs">
+      <DependentUpon>202011261959189_CreateNotificationTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -175,14 +167,8 @@
     <EmbeddedResource Include="Migrations\202010081320214_CreateUsersTable.resx">
       <DependentUpon>202010081320214_CreateUsersTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010211931388_CreateBooksTable.resx">
-      <DependentUpon>202010211931388_CreateBooksTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011261845305_CreateNotificationsTable.resx">
-      <DependentUpon>202011261845305_CreateNotificationsTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011261849156_CreateNotificationsTable1.resx">
-      <DependentUpon>202011261849156_CreateNotificationsTable1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011261959189_CreateNotificationTable.resx">
+      <DependentUpon>202011261959189_CreateNotificationTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
