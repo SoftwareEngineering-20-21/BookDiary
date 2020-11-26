@@ -18,6 +18,9 @@ namespace BookDiary.BLL.DTO
         public string Title { get; set; }
         public string Author { get; set; }
         public int TotalPages { get; set; }
+        public int ReadPages { get; set; }
+        public string Review { get; set; }
+        public int Mark { get; set; }
         public int UserId { get; set; }
     }
 }

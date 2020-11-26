@@ -11,6 +11,7 @@ namespace BookDiary.DAL.Repositories
         private UserRepository userRepository;
         private BookRepository bookRepository;
         private StatisticRepository statisticRepository;
+        private NotificationRepository notificationRepository;
 
         public EFUnitOfWork(string connectionString)
         {
@@ -46,6 +47,17 @@ namespace BookDiary.DAL.Repositories
                 return statisticRepository;
             }
         }
+
+        public IRepository<Notification> Notifications
+        {
+            get
+            {
+                if (notificationRepository == null)
+                    notificationRepository = new NotificationRepository(db);
+                return notificationRepository;
+            }
+        }
+
 
         public void Save()
         {

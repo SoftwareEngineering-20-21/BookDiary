@@ -1,0 +1,52 @@
+﻿using BookDiary.DAL.EF;
+using BookDiary.DAL.Entities;
+using BookDiary.DAL.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+
+namespace BookDiary.DAL.Repositories
+{
+    class NotificationRepository : IRepository<Notification>
+    {
+        private AppDbContext db;
+
+        public NotificationRepository(AppDbContext context)
+        {
+            this.db = context;
+        }
+
+        public IEnumerable<Notification> GetAll()
+        {
+            return db.Notifications;
+        }
+
+        public Notification Get(int id)
+        {
+            return db.Notifications.Find(id);
+        }
+
+        public void Create(Notification notification)
+        {
+            db.Notifications.Add(notification);
+        }
+
+        public void Update(Notification notification)
+        {
+            db.Entry(notification).State = EntityState.Modified;
+        }
+
+        public IEnumerable<Notification> Find(Func<Notification, Boolean> predicate)
+        {
+            return db.Notifications.Where(predicate).ToList();
+        }
+
+        public void Delete(int id)
+        {
+            Notification notification = db.Notifications.Find(id);
+            if (notification != null)
+                db.Notifications.Remove(notification);
+        }
+    }
+}

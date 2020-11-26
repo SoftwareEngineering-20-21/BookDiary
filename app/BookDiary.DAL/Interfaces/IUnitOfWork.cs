@@ -8,6 +8,7 @@ namespace BookDiary.DAL.Interfaces
         IRepository<User> Users { get; }
         IRepository<Book> Books { get; }
         IRepository<Statistic> Statistics { get; }
+        IRepository<Notification> Notifications { get; }
         void Save();
     }
 }
