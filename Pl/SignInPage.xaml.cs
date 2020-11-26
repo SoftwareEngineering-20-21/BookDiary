@@ -12,16 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Pl
+namespace BookDiary.Pl
 {
     /// <summary>
     /// Interaction logic for SIgnInPage.xaml
     /// </summary>
-    public partial class SIgnInPage : Window
+    public partial class SignInPage : Window
     {
-        public SIgnInPage()
+        public SignInPage()
         {
             InitializeComponent();
         }
+
+
+        private void ButtonHomePage_Click(object sender, RoutedEventArgs e)
+        {
+
+            HomePage hp = new HomePage();
+            hp.Show();
+            this.Hide();
+
+        }
     }
+    
 }

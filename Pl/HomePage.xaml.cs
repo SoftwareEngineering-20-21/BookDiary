@@ -234,11 +234,11 @@ namespace BookDiary.Pl
 
         private void ButtonSignIn_Click(object sender, RoutedEventArgs e)
         {
-            /*
+
             SignInPage sp = new SignInPage();
             sp.Show();
             this.Hide();
-            */
+
         }
 
         private void ButtonSignUp_Click(object sender, RoutedEventArgs e)
