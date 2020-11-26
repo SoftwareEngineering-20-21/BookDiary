@@ -9,11 +9,14 @@ namespace BookDiary.DAL.Repositories
     {
         private AppDbContext db;
         private UserRepository userRepository;
+        private BookRepository bookRepository;
+        private StatisticRepository statisticRepository;
 
         public EFUnitOfWork(string connectionString)
         {
             db = new AppDbContext(connectionString);
         }
+
         public IRepository<User> Users
         {
             get
@@ -21,6 +24,26 @@ namespace BookDiary.DAL.Repositories
                 if (userRepository == null)
                     userRepository = new UserRepository(db);
                 return userRepository;
+            }
+        }
+
+        public IRepository<Book> Books
+        {
+            get
+            {
+                if (bookRepository == null)
+                    bookRepository = new BookRepository(db);
+                return bookRepository;
+            }
+        }
+
+        public IRepository<Statistic> Statistics
+        {
+            get
+            {
+                if (statisticRepository == null)
+                    statisticRepository = new StatisticRepository(db);
+                return statisticRepository;
             }
         }
 

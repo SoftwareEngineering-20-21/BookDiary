@@ -7,6 +7,10 @@ namespace BookDiary.DAL.EF
     { 
         public DbSet<User> Users { get; set; }
 
+        public DbSet<Book> Books { get; set; }
+
+        public DbSet<Statistic> Statistics { get; set; }
+
         public AppDbContext() : base("DefaultConnection") { }
 
         public AppDbContext(string connectionString) : base(connectionString) { }

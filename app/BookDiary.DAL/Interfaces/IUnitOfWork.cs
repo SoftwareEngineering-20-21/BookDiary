@@ -6,6 +6,8 @@ namespace BookDiary.DAL.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         IRepository<User> Users { get; }
+        IRepository<Book> Books { get; }
+        IRepository<Statistic> Statistics { get; }
         void Save();
     }
 }
