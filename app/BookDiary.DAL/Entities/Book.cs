@@ -1,6 +1,8 @@
 ﻿using BookDiary.DAL.Abstractions;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using BookDiary.DAL.CustomValidators;
+using System.ComponentModel;
 
 namespace BookDiary.DAL.Entities
 {
@@ -27,6 +29,18 @@ namespace BookDiary.DAL.Entities
 
         [Required]
         public int TotalPages { get; set; }
+
+        [Required]
+        [DefaultValue(0)]
+        public int ReadPages { get; set; }
+
+        [Column(TypeName = "VARCHAR")]
+        [MaxLength(1000)]
+        public string Review { get; set; }
+
+        [MinValue(1)]
+        [MaxValue(5)]
+        public int Mark { get; set; }
 
         [Required]
         public int UserId { get; set; }

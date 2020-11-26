@@ -47,6 +47,9 @@ namespace BookDiary.BLL.Services
                 book.Title = bookDto.Title;
                 book.Author = bookDto.Author;
                 book.TotalPages = bookDto.TotalPages;
+                book.ReadPages = bookDto.ReadPages;
+                book.Review = bookDto.Review;
+                book.Mark = bookDto.Mark;
                 Database.Books.Update(book);
             }
 
@@ -80,7 +83,7 @@ namespace BookDiary.BLL.Services
             {
                 throw new ValidationException("Book not found", "");
             }
-            return new BookDTO { Status = (DTO.BookStatus)book.Status, Title = book.Title, Author = book.Author, TotalPages = book.TotalPages, UserId = book.UserId };
+            return new BookDTO { Status = (DTO.BookStatus)book.Status, Title = book.Title, Author = book.Author, TotalPages = book.TotalPages, ReadPages = book.ReadPages, Review = book.Review, Mark = book.Mark, UserId = book.UserId };
         }
 
         public IEnumerable<BookDTO> GetBooks()
