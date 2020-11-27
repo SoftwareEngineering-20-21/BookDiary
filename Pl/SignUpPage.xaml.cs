@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,16 +14,33 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Pl
+namespace BookDiary.Pl
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SignUpPage : Window
     {
-        public MainWindow()
+        public SignUpPage()
         {
             InitializeComponent();
+        }
+
+        private void ButtonHomePage_Click(object sender, RoutedEventArgs e)
+        {
+
+            HomePage hp = new HomePage();
+            hp.Show();
+            this.Hide();
+
+        }
+
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            Application.Current.Shutdown();
         }
     }
 }
