@@ -100,9 +100,6 @@ namespace BookDiary.BLL.Services
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<User>, List<UserDTO>>(Database.Users.GetAll());
         }
-
-        
-
     }
 
 }
