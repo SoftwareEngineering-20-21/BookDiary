@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ninject">
+      <HintPath>..\app\bin\Debug\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -171,6 +174,10 @@
     <Resource Include="resource\book-icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\app\BookDiary.BLL\BookDiary.BLL.csproj">
+      <Project>{709d6c5f-af02-4d1a-a119-3569626c10d3}</Project>
+      <Name>BookDiary.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\app\BookDiary.DAL\BookDiary.DAL.csproj">
       <Project>{945bb00f-c22e-46ec-b7f9-49eaf15718d0}</Project>
       <Name>BookDiary.DAL</Name>

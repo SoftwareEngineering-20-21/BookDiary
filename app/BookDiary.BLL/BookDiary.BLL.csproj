@@ -56,7 +56,6 @@
     <Compile Include="DTO\BookDTO.cs" />
     <Compile Include="DTO\NotificationDTO.cs" />
     <Compile Include="DTO\StatisticDTO.cs" />
-    <Compile Include="Infrastructure\ValidationException.cs" />
     <Compile Include="Interfaces\IBookService.cs" />
     <Compile Include="Interfaces\INotificationService.cs" />
     <Compile Include="Interfaces\IStatisticService.cs" />

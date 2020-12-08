@@ -7,6 +7,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using BookDiary.DAL.Entities;
+using BookDiary.BLL.Infrastructure;
+using BookDiary.BLL.Services;
+using BookDiary.BLL.Interfaces;
+using Ninject;
 
 namespace BookDiary.Pl
 {
@@ -249,7 +253,7 @@ namespace BookDiary.Pl
             this.Hide();
 
 
-        }
+        }      
 
         private void AddBook_Click(object sender, RoutedEventArgs e)
         {
