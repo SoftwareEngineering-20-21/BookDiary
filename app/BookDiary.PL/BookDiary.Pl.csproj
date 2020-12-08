@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{AA0B1C72-B317-49FA-B2DB-49C7E24F1566}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Pl</RootNamespace>
-    <AssemblyName>Pl</AssemblyName>
+    <RootNamespace>BookDiary.PL</RootNamespace>
+    <AssemblyName>BookDiary.PL</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -175,11 +175,11 @@
     <Resource Include="resource\book-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\app\BookDiary.BLL\BookDiary.BLL.csproj">
+    <ProjectReference Include="..\BookDiary.BLL\BookDiary.BLL.csproj">
       <Project>{709d6c5f-af02-4d1a-a119-3569626c10d3}</Project>
       <Name>BookDiary.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\app\BookDiary.DAL\BookDiary.DAL.csproj">
+    <ProjectReference Include="..\BookDiary.DAL\BookDiary.DAL.csproj">
       <Project>{945bb00f-c22e-46ec-b7f9-49eaf15718d0}</Project>
       <Name>BookDiary.DAL</Name>
     </ProjectReference>
