@@ -1,9 +1,9 @@
-﻿<Window x:Class="BookDiary.Pl.SignInPage"
+﻿<Window x:Class="BookDiary.PL.SignInPage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Pl"
+        xmlns:local="clr-namespace:BookDiary.PL"
         mc:Ignorable="d"
         Title="SignInPage" Height="600" Width="820">
     <Window.Resources>
@@ -76,7 +76,7 @@
             <Button Height="40" Width="40" Background="Transparent" Click="ButtonHomePage_Click">
                 <StackPanel>
                     <TextBlock>
-                        <Image Source="resource/logo.png"/>
+                        <Image Source="../resource/logo.png"/>
                     </TextBlock>
                 </StackPanel>
             </Button>

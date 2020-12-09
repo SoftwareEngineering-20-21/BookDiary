@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Pl
+namespace BookDiary.PL
 {
     /// <summary>
-    /// Interaction logic for BookStatisticPage.xaml
+    /// Interaction logic for NotificationsPage.xaml
     /// </summary>
-    public partial class BookStatisticPage : Window
+    public partial class NotificationsPage : Window
     {
-        public BookStatisticPage()
+        public NotificationsPage()
         {
             InitializeComponent();
         }

@@ -2,7 +2,7 @@
 using System.Windows;
 using BookDiary.DAL.Entities;
 
-namespace BookDiary.Pl
+namespace BookDiary.PL
 {
     /// <summary>
     /// Interaction logic for BookPage.xaml

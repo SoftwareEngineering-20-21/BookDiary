@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookDiary.BLL.Interfaces
 {
-    interface IHashService
+    public interface IHashService
     {
         string GetHash(string password);
     }

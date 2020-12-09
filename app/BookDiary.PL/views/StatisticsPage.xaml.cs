@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Pl
+namespace BookDiary.PL
 {
     /// <summary>
     /// Interaction logic for StatisticsPage.xaml

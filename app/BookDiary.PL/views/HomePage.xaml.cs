@@ -12,7 +12,7 @@ using BookDiary.BLL.Services;
 using BookDiary.BLL.Interfaces;
 using Ninject;
 
-namespace BookDiary.Pl
+namespace BookDiary.PL
 {
     public enum Status
     { 
@@ -32,6 +32,16 @@ namespace BookDiary.Pl
         List<Book> BooksInProgress;
         List<Book> BooksPlanned;
         List<Book> BooksCompleted;
+
+        private IKernel container;
+
+
+
+        public HomePage(IKernel container) : base()
+        {
+            this.container = container;
+            this.Title = container.Get<UserService>().GetTitle();
+        }
 
         public HomePage()
         {
