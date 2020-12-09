@@ -33,6 +33,16 @@ namespace BookDiary.PL
         List<Book> BooksPlanned;
         List<Book> BooksCompleted;
 
+        private IKernel container;
+
+
+
+        public HomePage(IKernel container) : base()
+        {
+            this.container = container;
+            this.Title = container.Get<UserService>().GetTitle();
+        }
+
         public HomePage()
         {
             InitializeComponent();

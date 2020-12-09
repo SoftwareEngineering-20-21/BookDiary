@@ -15,12 +15,22 @@ namespace BookDiary.BLL.Services
 {
     public class UserService : IUserService
     {
-        IUnitOfWork Database { get; set; }
+        private IUnitOfWork Database { get; set; }
 
-        public UserService(IUnitOfWork uow)
+        private IHashService HashService;
+
+        public UserService(IUnitOfWork uow, IHashService hashService)
         {
+            HashService = hashService;
             Database = uow;
         }
+
+        // TODO: delete
+        public String GetTitle()
+        {
+            return HashService.GetHash("!!!Homepage");
+        }
+
         public UserDTO GetUser(int? Id)
         {
             if (Id == null)
@@ -31,7 +41,6 @@ namespace BookDiary.BLL.Services
             return new UserDTO {Nickname = user.Nickname, Fullname=user.Fullname,Email=user.Email};
         }
 
-
         public void CreateUser(UserDTO userDto)
         {            
             if (Database.Users.Get(userDto.Id) != null)
@@ -40,14 +49,12 @@ namespace BookDiary.BLL.Services
             }
             else
             {
-                HashService Hash = new HashService();
-
                 User user = new User
                 {
                     Nickname = userDto.Nickname,
                     Fullname = userDto.Fullname,
                     Email = userDto.Email,
-                    Password = Hash.GetHash(userDto.Password)
+                    Password = HashService.GetHash(userDto.Password)
                 };
                 Database.Users.Create(user);
                 Database.Save();

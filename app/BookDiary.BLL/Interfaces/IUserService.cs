@@ -12,5 +12,6 @@ namespace BookDiary.BLL.Interfaces
         void DeleteUser(UserDTO userDTO);
         IEnumerable<UserDTO> GetUsers();
 
+        String GetTitle();
     }
 }
