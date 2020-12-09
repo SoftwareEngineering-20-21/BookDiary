@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,20 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BookDiary.Pl
+namespace BookDiary.PL
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SIgnInPage.xaml
     /// </summary>
-    public partial class SignUpPage : Window
+    public partial class SignInPage : Window
     {
-        public SignUpPage()
+        public SignInPage()
         {
             InitializeComponent();
         }
+
 
         private void ButtonHomePage_Click(object sender, RoutedEventArgs e)
         {
@@ -35,7 +34,6 @@ namespace BookDiary.Pl
 
         }
 
-
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
@@ -43,4 +41,5 @@ namespace BookDiary.Pl
             Application.Current.Shutdown();
         }
     }
+    
 }

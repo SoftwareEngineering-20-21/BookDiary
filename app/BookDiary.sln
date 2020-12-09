@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookDiary.BLL", "BookDiary.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookDiary.DAL", "BookDiary.DAL\BookDiary.DAL.csproj", "{945BB00F-C22E-46EC-B7F9-49EAF15718D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookDiary.Pl", "BookDiary.PL\BookDiary.Pl.csproj", "{AA0B1C72-B317-49FA-B2DB-49C7E24F1566}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookDiary.PL", "BookDiary.PL\BookDiary.PL.csproj", "{AA0B1C72-B317-49FA-B2DB-49C7E24F1566}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

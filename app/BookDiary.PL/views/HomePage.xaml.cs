@@ -12,7 +12,7 @@ using BookDiary.BLL.Services;
 using BookDiary.BLL.Interfaces;
 using Ninject;
 
-namespace BookDiary.Pl
+namespace BookDiary.PL
 {
     public enum Status
     { 
