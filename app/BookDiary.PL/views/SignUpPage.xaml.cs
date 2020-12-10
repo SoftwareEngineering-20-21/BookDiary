@@ -63,7 +63,7 @@ namespace BookDiary.PL
             try
             {
                 var user = userService.SignUp(nickName, fullName, email, password);
-                HomePage hp = new HomePage(kernel);
+                HomePage hp = new HomePage();
                 hp.Show();
                 Close();
             }

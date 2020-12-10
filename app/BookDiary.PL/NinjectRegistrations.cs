@@ -25,6 +25,7 @@ namespace BookDiary.PL
             Bind<IBookService>().To<BookService>().InSingletonScope();
             Bind<IStatisticService>().To<StatisticService>().InSingletonScope();
             Bind<INotificationService>().To<NotificationService>().InSingletonScope();
+            Bind<IHashService>().To<HashService>().InSingletonScope();
         }
     }
 }

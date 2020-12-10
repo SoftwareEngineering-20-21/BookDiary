@@ -20,9 +20,9 @@ namespace BookDiary.BLL.Services
 
         public UserDTO CurrentUser { get; private set; }
 
-        public UserService(IUnitOfWork uow, IHashService hashService)
+        public UserService(IUnitOfWork uow)
         {
-            HashService = hashService;
+            CurrentUser = null;
             Database = uow;
         }
 

@@ -38,7 +38,7 @@ namespace BookDiary.PL
         {
             // Window HomePage = new HomePage(container);
 
-            Current.MainWindow = new HomePage(container);
+            Current.MainWindow = new HomePage();
         }
     }
 }

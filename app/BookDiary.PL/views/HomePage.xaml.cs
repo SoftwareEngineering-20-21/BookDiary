@@ -35,15 +35,11 @@ namespace BookDiary.PL
 
         private IKernel kernel;
 
-        public HomePage(IKernel kernel) : base()
-        {
-            this.kernel = kernel;
-            this.Title = kernel.Get<UserService>().GetTitle();
-            InitializeComponent();
-        }
-
         public HomePage()
         {
+            var registrations = new NinjectRegistrations();
+            this.kernel = new StandardKernel(registrations);
+
             InitializeComponent();
             bookListStatus = Status.All;
 
@@ -343,7 +339,7 @@ namespace BookDiary.PL
             grid.ColumnDefinitions.Add(cd4);
 
             image = new Image();
-            image.Source = new BitmapImage(new Uri("resource/7.png", UriKind.Relative));
+            image.Source = new BitmapImage(new Uri("../resource/7.png", UriKind.Relative));
 
             Grid.SetRow(image, 1);
             Grid.SetColumn(image, 1);
