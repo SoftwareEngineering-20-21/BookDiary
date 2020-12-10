@@ -18,12 +18,10 @@ namespace BookDiary.DAL.Entities
         public BookStatus Status { get; set; }
 
         [Required]
-        [Column(TypeName = "VARCHAR")]
         [MaxLength(225)]
         public string Title { get; set; }
 
         [Required]
-        [Column(TypeName = "VARCHAR")]
         [MaxLength(225)]
         public string Author { get; set; }
 
@@ -34,7 +32,6 @@ namespace BookDiary.DAL.Entities
         [DefaultValue(0)]
         public int ReadPages { get; set; }
 
-        [Column(TypeName = "VARCHAR")]
         [MaxLength(1000)]
         public string Review { get; set; }
 

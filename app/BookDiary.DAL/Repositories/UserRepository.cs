@@ -2,10 +2,10 @@
 using BookDiary.DAL.Entities;
 using BookDiary.DAL.Interfaces;
 using System;
-using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookDiary.DAL.Repositories
 {
@@ -44,7 +44,7 @@ namespace BookDiary.DAL.Repositories
 
         public User Get(int id)
         {
-            return db.Users.Find(id);
+            return dbSet.FirstOrDefault(x => x.Id == id);
         }
 
         public void Create(User user)
@@ -54,7 +54,7 @@ namespace BookDiary.DAL.Repositories
 
         public void Update(User user)
         {
-            db.Entry(user).State = EntityState.Modified;
+            dbSet.Update(user);
         }
 
         public IEnumerable<User> Find(Func<User, bool> predicate)
@@ -64,9 +64,9 @@ namespace BookDiary.DAL.Repositories
 
         public void Delete(int id)
         {
-            User user = db.Users.Find(id);
+            User user = dbSet.Find(id);
             if (user != null)
-                db.Users.Remove(user);
+                dbSet.Remove(user);
         }
 
         public void Save()

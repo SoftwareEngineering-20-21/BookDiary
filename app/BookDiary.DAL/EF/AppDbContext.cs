@@ -1,5 +1,6 @@
 ﻿using BookDiary.DAL.Entities;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace BookDiary.DAL.EF
 {
@@ -13,8 +14,19 @@ namespace BookDiary.DAL.EF
 
         public DbSet<Notification> Notifications { get; set; }
 
-        public AppDbContext() : base("DefaultConnection") { }
 
-        public AppDbContext(string connectionString) : base(connectionString) { }
+        public AppDbContext()
+            : base(new DbContextOptionsBuilder<AppDbContext>().UseSqlServer(
+            @"data source=DESKTOP-H0S4OTC\SQLEXPRESS;Initial Catalog=BookDiary1;Trusted_Connection=True;").Options)
+        {
+
+            Database.EnsureCreated();
+        }
+
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+            : base(options)
+        {
+            Database.EnsureCreated();
+        }
     }
 }

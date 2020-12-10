@@ -65,7 +65,7 @@ namespace BookDiary.PL
                 var user = userService.SignUp(nickName, fullName, email, password);
                 HomePage hp = new HomePage();
                 hp.Show();
-                Close();
+                this.Hide();
             }
             catch (ArgumentException exc)
             {
