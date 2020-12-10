@@ -36,7 +36,8 @@ namespace BookDiary.PL
 
         private void ComposeObjects()
         {
-            //Window HomePage = new HomePage(container)
+            // Window HomePage = new HomePage(container);
+
             Current.MainWindow = new HomePage(container);
         }
     }

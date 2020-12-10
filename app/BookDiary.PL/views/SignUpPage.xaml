@@ -63,7 +63,7 @@
                 <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition Height="10"></RowDefinition>
                 <RowDefinition Height="50"></RowDefinition>
@@ -82,41 +82,69 @@
                         </TextBlock>
                     </StackPanel>
                 </Button>
-                <TextBlock 
+            <TextBlock 
                     VerticalAlignment="Center" HorizontalAlignment="Left"
                     TextAlignment="Center"
                     FontWeight="Bold"
                     FontSize="40"
                     Text="BooksDiary"
+                />
+            <Label 
+                    x:Name="ErrorLabel" 
+                    Content="" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" 
+                    Foreground="#FFD70D0D" 
+                    Visibility="Visible" 
+                    FontSize="20" Width="Auto"
             />
-            </StackPanel>
+        </StackPanel>
 
-            <TextBlock 
-                Grid.Row="3"
-                Grid.Column="1"
-                VerticalAlignment="Center" 
-                Text="Nickname"
-                Foreground="Black"
-                FontSize="20"
-                FontWeight="Bold"
+        <TextBlock 
+             Grid.Row="3"
+             Grid.Column="1"
+             VerticalAlignment="Center" 
+             Text="Nickname"
+             Foreground="Black"
+             FontSize="20"
+             FontWeight="Bold"
         />
 
-            <TextBox 
-                x:Name="Textbox"
-                Grid.Row="4"
-                Grid.Column="1"
-                Text="Input"
-                TextAlignment="Left"
-                VerticalAlignment="Center" 
-                Foreground="DimGray"
-                FontSize="24"
-                FontWeight="Bold"
-                TextWrapping="Wrap" Style="{DynamicResource LoginInputStyle}"
+        <TextBox 
+             x:Name="TextBoxNickName"
+             Grid.Row="4"
+             Grid.Column="1"
+             TextAlignment="Left"
+             VerticalAlignment="Center" 
+             Foreground="DimGray"
+             FontSize="24"
+             FontWeight="Bold"
+             TextWrapping="Wrap" Style="{DynamicResource LoginInputStyle}"
                 
-            />
+        />
+        <TextBlock 
+             Grid.Row="5"
+             Grid.Column="1"
+             VerticalAlignment="Center" 
+             Text="FullName"
+             Foreground="Black"
+             FontSize="20"
+             FontWeight="Bold"
+        />
+        <TextBox 
+             x:Name="TextBoxFullName"
+             Grid.Row="6"
+             Grid.Column="1"
+             TextAlignment="Left"
+             VerticalAlignment="Center" 
+             Foreground="DimGray"
+             FontSize="24"
+             FontWeight="Bold"
+             TextWrapping="Wrap" Style="{DynamicResource LoginInputStyle}"     
+        />
             <TextBlock 
                 Grid.Column="1"
-                Grid.Row="5"
+                Grid.Row="7"
                 VerticalAlignment="Center" HorizontalAlignment="Left"
                 Text="Email"
                 Foreground="Black"
@@ -124,10 +152,9 @@
                 FontWeight="Bold"
         />
             <TextBox
-                x:Name="TextBox"
-                Grid.Row="6"
-                Grid.Column="1" 
-                Text="Input"
+                x:Name="TextBoxEmail"
+                Grid.Row="8"
+                Grid.Column="1"
                 TextAlignment="Left"
                 VerticalAlignment="Center"
                 Foreground="DimGray"
@@ -137,61 +164,40 @@
         />
             <TextBlock 
                 Grid.Column="1"
-                Grid.Row="7"
+                Grid.Row="9"
                 VerticalAlignment="Center" HorizontalAlignment="Left"
                 Text="Password"
                 Foreground="Black"
                 FontSize="20"
                 FontWeight="Bold"
         />
-            <TextBox
-                x:Name="TextBox1"
-                Grid.Row="8"
-                Grid.Column="1" 
-                Text="Input"
-                TextAlignment="Left"
-                VerticalAlignment="Center"
-                Foreground="DimGray"
-                FontSize="24"
-                FontWeight="Bold"
-                TextWrapping="Wrap" Style="{DynamicResource LoginInputStyle}"
+        <PasswordBox
+             x:Name="TextBoxPassword"
+             Grid.Row="10"
+             Grid.Column="1" 
+             VerticalAlignment="Center"
+             Foreground="DimGray"
+             FontSize="24"
+             FontWeight="Bold"
         />
         <TextBlock 
                 Grid.Column="1"
-                Grid.Row="9"
+                Grid.Row="11"
                 VerticalAlignment="Center" HorizontalAlignment="Left"
                 Text="Confirm Password"
                 Foreground="Black"
                 FontSize="20"
                 FontWeight="Bold"
         />
-        <TextBox
-                x:Name="TextBox2"
-                Grid.Row="10"
+        <PasswordBox
+                x:Name="TextBoxConfirmPassword"
+                Grid.Row="12"
                 Grid.Column="1" 
-                Text="Input"
-                TextAlignment="Left"
                 VerticalAlignment="Center"
                 Foreground="DimGray"
                 FontSize="24"
                 FontWeight="Bold"
-                TextWrapping="Wrap" Style="{DynamicResource LoginInputStyle}"
         />
-        <StackPanel Orientation="Horizontal" Grid.Row="12" Grid.Column="1" >
-            <Image Source="../resource/1.png" Width="30" Height="30"/>
-            <Button 
-            x:Name="ButtonSignIn"
-            Style="{DynamicResource StartPageButtonStyle}"
-            HorizontalAlignment="Left"
-            Background="GhostWhite"
-            Foreground="Black"
-            BorderBrush="Black"
-            Content="Add photo"
-            Height="30"
-            Width="100"
-            
-         />
-        </StackPanel>
 
         <Button 
             Grid.Row="14"
@@ -203,7 +209,7 @@
             BorderBrush="White"
             Content="Register"  
             Height="50"
-            Width="200"
+            Width="200" Click="ButtonSignUp_Click"
         />
 
 

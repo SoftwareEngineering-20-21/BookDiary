@@ -8,13 +8,19 @@ using System.Linq;
 
 namespace BookDiary.DAL.Repositories
 {
-    class NotificationRepository : IRepository<Notification>
+    public class NotificationRepository : IRepository<Notification>
     {
         private AppDbContext db;
+        private readonly DbSet<Notification> dbSet;
 
         public NotificationRepository(AppDbContext context)
         {
             this.db = context;
+        }
+
+        public IEnumerable<Notification> Get()
+        {
+            return dbSet.ToList();
         }
 
         public IEnumerable<Notification> GetAll()

@@ -9,13 +9,19 @@ using System.Text;
 
 namespace BookDiary.DAL.Repositories
 {
-    class BookRepository : IRepository<Book>
+    public class BookRepository : IRepository<Book>
     {
         private AppDbContext db;
+        private readonly DbSet<Book> dbSet;
 
         public BookRepository(AppDbContext context)
         {
             this.db = context;
+        }
+
+        public IEnumerable<Book> Get()
+        {
+            return dbSet.ToList();
         }
 
         public IEnumerable<Book> GetAll()

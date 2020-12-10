@@ -11,10 +11,16 @@ namespace BookDiary.DAL.Repositories
     public class UserRepository : IRepository<User>
     {
         private AppDbContext db;
+        private readonly DbSet<User> dbSet;
 
         public UserRepository(AppDbContext context)
         {
             this.db = context;
+        }
+
+        public IEnumerable<User> Get()
+        {
+            return dbSet.ToList();
         }
 
         public IEnumerable<User> GetAll()

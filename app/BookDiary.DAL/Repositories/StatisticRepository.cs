@@ -11,10 +11,16 @@ namespace BookDiary.DAL.Repositories
     public class StatisticRepository : IRepository<Statistic>
     {
         private AppDbContext db;
+        private readonly DbSet<Statistic> dbSet;
 
         public StatisticRepository(AppDbContext context)
         {
             this.db = context;
+        }
+
+        public IEnumerable<Statistic> Get()
+        {
+            return dbSet.ToList();
         }
 
         public IEnumerable<Statistic> GetAll()
