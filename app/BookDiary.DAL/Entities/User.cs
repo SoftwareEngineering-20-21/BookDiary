@@ -8,7 +8,6 @@ namespace BookDiary.DAL.Entities
     {
         [Required]
         [MaxLength(30)]
-        [Column(TypeName = "VARCHAR")]
         [StringLength(255)]
         [Index(IsUnique = true)]
         public string Nickname { get; set; }
@@ -17,7 +16,6 @@ namespace BookDiary.DAL.Entities
         public string Fullname { get; set; }
 
         [Required]
-        [Column(TypeName = "VARCHAR")]
         [StringLength(255)]
         [Index(IsUnique = true)]
         public string Email { get; set; }

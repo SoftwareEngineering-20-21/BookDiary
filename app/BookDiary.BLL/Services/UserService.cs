@@ -1,5 +1,4 @@
 ﻿using System;
-
 using System.Security.Cryptography;
 using System.Collections.Generic;
 using BookDiary.BLL.DTO;
@@ -7,9 +6,9 @@ using BookDiary.DAL.Entities;
 using BookDiary.DAL.Interfaces;
 using BookDiary.BLL.Infrastructure;
 using BookDiary.BLL.Interfaces;
-
-
 using AutoMapper;
+using System.Net.Mail;
+using System.Linq;
 
 namespace BookDiary.BLL.Services
 {
@@ -19,9 +18,11 @@ namespace BookDiary.BLL.Services
 
         private IHashService HashService;
 
-        public UserService(IUnitOfWork uow, IHashService hashService)
+        public UserDTO CurrentUser { get; private set; }
+
+        public UserService(IUnitOfWork uow)
         {
-            HashService = hashService;
+            CurrentUser = null;
             Database = uow;
         }
 
@@ -29,6 +30,73 @@ namespace BookDiary.BLL.Services
         public String GetTitle()
         {
             return HashService.GetHash("!!!Homepage");
+        }
+
+        public bool IsValidMail(string email)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(email);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public UserDTO Login(string email, string password)
+        {
+            User user = Database.Users.Get().FirstOrDefault(x => x.Email == email);
+            UserDTO userDto = new UserDTO
+            {
+                Id = user.Id,
+                Nickname = user.Nickname,
+                Fullname = user.Fullname,
+                Email = user.Email,
+                Password = user.Password
+            };
+            HashService Hash = new HashService();
+            if (user != null && Hash.GetHash(password)  == Hash.GetHash(user.Password))
+            {
+                CurrentUser = userDto;
+            }
+            else
+            {
+                throw new ArgumentException("The email or password is incorrect.");
+            }
+            return CurrentUser;
+        }
+
+        public UserDTO SignUp(string nickName, string fullName, string email, string password)
+        {
+            var existUser = Database.Users.Get().FirstOrDefault(x => x.Email == email);
+            if (existUser == null && IsValidMail(email))
+            {
+                HashService Hash = new HashService();
+                User user = new User
+                {
+                    Nickname = nickName,
+                    Fullname = fullName,
+                    Email = email,
+                    Password = Hash.GetHash(password),
+                };
+                Database.Users.Update(user);
+                Database.Save();
+                CurrentUser = new UserDTO
+                {
+                    Id = user.Id,
+                    Nickname = user.Nickname,
+                    Fullname = user.Fullname,
+                    Email = user.Email,
+                    Password = user.Password
+                };
+            }
+            else
+            {
+                throw new ArgumentException("Phone or mail incorrect");
+            }
+            return CurrentUser;
         }
 
         public UserDTO GetUser(int? Id)

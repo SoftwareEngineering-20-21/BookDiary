@@ -1,20 +1,40 @@
 ﻿using BookDiary.DAL.EF;
 using BookDiary.DAL.Entities;
 using BookDiary.DAL.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BookDiary.DAL.Repositories
 {
-    class NotificationRepository : IRepository<Notification>
+    public class NotificationRepository : IRepository<Notification>
     {
         private AppDbContext db;
+        private readonly DbSet<Notification> dbSet;
+
+        public NotificationRepository()
+        {
+            this.db = new AppDbContext();
+            dbSet = db.Set<Notification>();
+            dbSet.Load();
+        }
 
         public NotificationRepository(AppDbContext context)
         {
             this.db = context;
+            dbSet = db.Set<Notification>();
+        }
+
+        public IEnumerable<Notification> Get()
+        {
+            return dbSet.ToList();
+        }
+
+        public IEnumerable<Notification> Get(Func<Notification, bool> predicate)
+        {
+            return dbSet.Where(predicate).ToList();
         }
 
         public IEnumerable<Notification> GetAll()
@@ -24,7 +44,7 @@ namespace BookDiary.DAL.Repositories
 
         public Notification Get(int id)
         {
-            return db.Notifications.Find(id);
+            return dbSet.FirstOrDefault(x => x.Id == id);
         }
 
         public void Create(Notification notification)
@@ -34,19 +54,29 @@ namespace BookDiary.DAL.Repositories
 
         public void Update(Notification notification)
         {
-            db.Entry(notification).State = EntityState.Modified;
+            dbSet.Update(notification);
         }
 
-        public IEnumerable<Notification> Find(Func<Notification, Boolean> predicate)
+        public IEnumerable<Notification> Find(Func<Notification, bool> predicate)
         {
             return db.Notifications.Where(predicate).ToList();
         }
 
         public void Delete(int id)
         {
-            Notification notification = db.Notifications.Find(id);
+            Notification notification = dbSet.Find(id);
             if (notification != null)
-                db.Notifications.Remove(notification);
+                dbSet.Remove(notification);
+        }
+
+        public void Save()
+        {
+            db.SaveChanges();
+        }
+
+        public async Task SaveAsync()
+        {
+            await db.SaveChangesAsync();
         }
     }
 }

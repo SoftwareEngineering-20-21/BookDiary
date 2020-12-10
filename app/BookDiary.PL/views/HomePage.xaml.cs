@@ -33,18 +33,13 @@ namespace BookDiary.PL
         List<Book> BooksPlanned;
         List<Book> BooksCompleted;
 
-        private IKernel container;
-
-
-
-        public HomePage(IKernel container) : base()
-        {
-            this.container = container;
-            this.Title = container.Get<UserService>().GetTitle();
-        }
+        private IKernel kernel;
 
         public HomePage()
         {
+            var registrations = new NinjectRegistrations();
+            this.kernel = new StandardKernel(registrations);
+
             InitializeComponent();
             bookListStatus = Status.All;
 
@@ -258,7 +253,7 @@ namespace BookDiary.PL
         private void ButtonSignUp_Click(object sender, RoutedEventArgs e)
         {
 
-            SignUpPage sp = new SignUpPage();
+            SignUpPage sp = new SignUpPage(kernel);
             sp.Show();
             this.Hide();
 
@@ -344,7 +339,7 @@ namespace BookDiary.PL
             grid.ColumnDefinitions.Add(cd4);
 
             image = new Image();
-            image.Source = new BitmapImage(new Uri("resource/7.png", UriKind.Relative));
+            image.Source = new BitmapImage(new Uri("../resource/7.png", UriKind.Relative));
 
             Grid.SetRow(image, 1);
             Grid.SetColumn(image, 1);

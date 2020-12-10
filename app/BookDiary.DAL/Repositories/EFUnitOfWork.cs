@@ -13,9 +13,13 @@ namespace BookDiary.DAL.Repositories
         private StatisticRepository statisticRepository;
         private NotificationRepository notificationRepository;
 
-        public EFUnitOfWork(string connectionString)
+        public EFUnitOfWork()
         {
-            db = new AppDbContext(connectionString);
+            this.db = new AppDbContext();
+        }
+        public EFUnitOfWork(AppDbContext context)
+        {
+            this.db = context;
         }
 
         public IRepository<User> Users
