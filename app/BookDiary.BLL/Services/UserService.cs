@@ -57,7 +57,7 @@ namespace BookDiary.BLL.Services
                 Password = user.Password
             };
             HashService Hash = new HashService();
-            if (user != null && Hash.GetHash(password)  == Hash.GetHash(user.Password))
+            if (user != null && Hash.GetHash(password) == user.Password)
             {
                 CurrentUser = userDto;
             }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookDiary.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201210124823_NewMigration")]
+    [Migration("20201210210429_NewMigration")]
     partial class NewMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

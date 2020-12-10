@@ -244,7 +244,7 @@ namespace BookDiary.PL
         private void ButtonSignIn_Click(object sender, RoutedEventArgs e)
         {
 
-            SignInPage sp = new SignInPage();
+            SignInPage sp = new SignInPage(kernel);
             sp.Show();
             this.Hide();
 
