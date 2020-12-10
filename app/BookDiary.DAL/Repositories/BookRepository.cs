@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BookDiary.DAL.Repositories
 {
@@ -22,6 +23,11 @@ namespace BookDiary.DAL.Repositories
         public IEnumerable<Book> Get()
         {
             return dbSet.ToList();
+        }
+
+        public IEnumerable<Book> Get(Func<Book, bool> predicate)
+        {
+            return db.Books.Where(predicate).ToList();
         }
 
         public IEnumerable<Book> GetAll()
@@ -44,7 +50,7 @@ namespace BookDiary.DAL.Repositories
             db.Entry(book).State = EntityState.Modified;
         }
 
-        public IEnumerable<Book> Find(Func<Book, Boolean> predicate)
+        public IEnumerable<Book> Find(Func<Book, bool> predicate)
         {
             return db.Books.Where(predicate).ToList();
         }
@@ -54,6 +60,16 @@ namespace BookDiary.DAL.Repositories
             Book book = db.Books.Find(id);
             if (book != null)
                 db.Books.Remove(book);
+        }
+
+        public void Save()
+        {
+            db.SaveChanges();
+        }
+
+        public async Task SaveAsync()
+        {
+            await db.SaveChangesAsync();
         }
     }
 }

@@ -15,12 +15,11 @@ namespace BookDiary.DAL.Repositories
 
         public EFUnitOfWork()
         {
-            db = new AppDbContext();
+            this.db = new AppDbContext();
         }
-
         public EFUnitOfWork(AppDbContext context)
         {
-            db = context;
+            this.db = context;
         }
 
         public IRepository<User> Users

@@ -5,6 +5,7 @@ using System;
 using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BookDiary.DAL.Repositories
 {
@@ -13,14 +14,27 @@ namespace BookDiary.DAL.Repositories
         private AppDbContext db;
         private readonly DbSet<User> dbSet;
 
+        public UserRepository()
+        {
+            this.db = new AppDbContext();
+            dbSet = db.Set<User>();
+            dbSet.Load();
+        }
+
         public UserRepository(AppDbContext context)
         {
             this.db = context;
+            dbSet = db.Set<User>();
         }
 
         public IEnumerable<User> Get()
         {
             return dbSet.ToList();
+        }
+
+        public IEnumerable<User> Get(Func<User, bool> predicate)
+        {
+            return dbSet.Where(predicate).ToList();
         }
 
         public IEnumerable<User> GetAll()
@@ -43,7 +57,7 @@ namespace BookDiary.DAL.Repositories
             db.Entry(user).State = EntityState.Modified;
         }
 
-        public IEnumerable<User> Find(Func<User, Boolean> predicate)
+        public IEnumerable<User> Find(Func<User, bool> predicate)
         {
             return db.Users.Where(predicate).ToList();
         }
@@ -53,6 +67,16 @@ namespace BookDiary.DAL.Repositories
             User user = db.Users.Find(id);
             if (user != null)
                 db.Users.Remove(user);
+        }
+
+        public void Save()
+        {
+            db.SaveChanges();
+        }
+
+        public async Task SaveAsync()
+        {
+            await db.SaveChangesAsync();
         }
     }
 }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BookDiary.DAL.Repositories
 {
@@ -21,6 +22,11 @@ namespace BookDiary.DAL.Repositories
         public IEnumerable<Notification> Get()
         {
             return dbSet.ToList();
+        }
+
+        public IEnumerable<Notification> Get(Func<Notification, bool> predicate)
+        {
+            return db.Notifications.Where(predicate).ToList();
         }
 
         public IEnumerable<Notification> GetAll()
@@ -43,7 +49,7 @@ namespace BookDiary.DAL.Repositories
             db.Entry(notification).State = EntityState.Modified;
         }
 
-        public IEnumerable<Notification> Find(Func<Notification, Boolean> predicate)
+        public IEnumerable<Notification> Find(Func<Notification, bool> predicate)
         {
             return db.Notifications.Where(predicate).ToList();
         }
@@ -53,6 +59,16 @@ namespace BookDiary.DAL.Repositories
             Notification notification = db.Notifications.Find(id);
             if (notification != null)
                 db.Notifications.Remove(notification);
+        }
+
+        public void Save()
+        {
+            db.SaveChanges();
+        }
+
+        public async Task SaveAsync()
+        {
+            await db.SaveChangesAsync();
         }
     }
 }

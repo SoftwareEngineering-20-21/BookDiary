@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BookDiary.DAL.Repositories
 {
@@ -21,6 +22,11 @@ namespace BookDiary.DAL.Repositories
         public IEnumerable<Statistic> Get()
         {
             return dbSet.ToList();
+        }
+
+        public IEnumerable<Statistic> Get(Func<Statistic, Boolean> predicate)
+        {
+            return db.Statistics.Where(predicate).ToList();
         }
 
         public IEnumerable<Statistic> GetAll()
@@ -53,6 +59,16 @@ namespace BookDiary.DAL.Repositories
             Statistic statistic = db.Statistics.Find(id);
             if (statistic != null)
                 db.Statistics.Remove(statistic);
+        }
+
+        public void Save()
+        {
+            db.SaveChanges();
+        }
+
+        public async Task SaveAsync()
+        {
+            await db.SaveChangesAsync();
         }
     }
 }
