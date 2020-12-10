@@ -17,7 +17,7 @@ namespace BookDiary.DAL.EF
 
         public AppDbContext()
             : base(new DbContextOptionsBuilder<AppDbContext>().UseSqlServer(
-            @"data source=DESKTOP-H0S4OTC\SQLEXPRESS;Initial Catalog=BookDiary1;Trusted_Connection=True;").Options)
+            @"data source=localhost;Initial Catalog=BookDiary1;Trusted_Connection=True;").Options)
         {
 
             Database.EnsureCreated();
