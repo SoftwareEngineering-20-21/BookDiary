@@ -87,6 +87,15 @@
                     FontSize="40"
                     Text="BooksDiary"
             />
+            <Label 
+                    x:Name="ErrorLabel" 
+                    Content="" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" 
+                    Foreground="#FFD70D0D" 
+                    Visibility="Visible" 
+                    FontSize="20" Width="Auto"
+            />
         </StackPanel>
 
         <TextBlock 
@@ -98,12 +107,13 @@
                 FontSize="20"
                 FontWeight="Bold"
         />
+       
 
         <TextBox 
-                x:Name="Textbox"
+                x:Name="TextboxEmail"
                 Grid.Row="4"
                 Grid.Column="1"
-                Text="Input"
+                Text=""
                 TextAlignment="Left"
                 VerticalAlignment="Center" 
                 Foreground="DimGray"
@@ -122,10 +132,10 @@
                 FontWeight="Bold"
         />
         <TextBox
-                x:Name="TextBox"
+                x:Name="TextBoxPassword"
                 Grid.Row="7"
                 Grid.Column="1" 
-                Text="Input"
+                Text=""
                 TextAlignment="Left"
                 VerticalAlignment="Center"
                 Foreground="DimGray"
@@ -144,10 +154,10 @@
             BorderBrush="Black"
             Content="Sing in"
             Height="50"
-            Width="200"
+            Width="200" Click="ButtonSignIn_Click"
             
          />
-
+        
 
         <Button 
             Grid.Row="11"
@@ -159,9 +169,9 @@
             BorderBrush="White"
             Content="Sing up"  
             Height="50"
-            Width="200"
+            Width="200" Click="ButtonSignUp_Click"
         />
-
+        
 
     </Grid>
 </Window>

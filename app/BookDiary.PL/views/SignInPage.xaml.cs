@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BookDiary.BLL.Interfaces;
+using BookDiary.BLL.Services;
+using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +22,11 @@ namespace BookDiary.PL
     /// </summary>
     public partial class SignInPage : Window
     {
-        public SignInPage()
+        private IKernel kernel;
+        public SignInPage(IKernel kernel)
         {
             InitializeComponent();
+            this.kernel = kernel;
         }
 
 
@@ -40,6 +45,43 @@ namespace BookDiary.PL
 
             Application.Current.Shutdown();
         }
+
+        private void ButtonSignIn_Click(object sender, RoutedEventArgs e)
+        {
+            IUserService userService = kernel.Get<IUserService>();
+            string email = TextboxEmail.Text;
+            string password = TextBoxPassword.Text;
+
+            if (email.Length == 0 || password.Length == 0)
+            {
+                ErrorLabel.Content = "Any field can not be empty.";
+                return;
+            }
+            if (!userService.IsValidMail(email))
+            {
+                ErrorLabel.Content = "The email is not a valid email address.";
+                return;
+            }
+            try
+            {
+                HashService Hash = new HashService();
+                TextBoxPassword.Text = Hash.GetHash(password);
+                var user = userService.Login(email, password);
+                HomePage hp = new HomePage();
+                hp.Show();
+                this.Hide();
+            }
+            catch (ArgumentException exc)
+            {
+                ErrorLabel.Content = exc.Message;
+            }
+        }
+
+        private void ButtonSignUp_Click(object sender, RoutedEventArgs e)
+        {
+            SignUpPage hp = new SignUpPage(kernel);
+            hp.Show();
+            this.Hide();
+        }
     }
-    
 }
