@@ -72,12 +72,20 @@ namespace BookDiary.BLL.Services
             {
                 throw new ValidationException("Notification id not set", "");
             }
+
             var notification = Database.Notifications.Get(Id.Value);
+
             if (notification == null)
             {
                 throw new ValidationException("Notification not found", "");
             }
-            return new NotificationDTO { Day = notification.Day, Message = notification.Message, IsSeen = notification.IsSeen, BookId = notification.BookId };
+
+            return new NotificationDTO {
+                Day = notification.Day,
+                Message = notification.Message,
+                IsSeen = notification.IsSeen,
+                BookId = notification.BookId
+            };
         }
 
         public IEnumerable<NotificationDTO> GetNotifications()

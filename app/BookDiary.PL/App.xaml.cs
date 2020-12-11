@@ -31,14 +31,11 @@ namespace BookDiary.PL
         {
             string CS = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             this.container = new StandardKernel(new ServiceModule(CS));
-            this.container.Bind<IUserService>().To<UserService>();
         }
 
         private void ComposeObjects()
         {
-            // Window HomePage = new HomePage(container);
-
-            Current.MainWindow = new SignInPage();
+            Current.MainWindow = new SignInPage(container);
         }
     }
 }

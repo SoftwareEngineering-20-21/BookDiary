@@ -15,9 +15,8 @@ namespace BookDiary.DAL.EF
         public DbSet<Notification> Notifications { get; set; }
 
 
-        public AppDbContext()
-            : base(new DbContextOptionsBuilder<AppDbContext>().UseSqlServer(
-            @"data source=localhost;Initial Catalog=BookDiary2;Trusted_Connection=True;").Options)
+        public AppDbContext(string connectionString)
+            : base(new DbContextOptionsBuilder<AppDbContext>().UseSqlServer(@connectionString).Options)
         {
             Database.EnsureCreated();
         }

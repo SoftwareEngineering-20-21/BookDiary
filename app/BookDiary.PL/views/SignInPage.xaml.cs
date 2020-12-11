@@ -22,22 +22,20 @@ namespace BookDiary.PL
     /// </summary>
     public partial class SignInPage : Window
     {
-        private IKernel kernel;
-        public SignInPage()
+        private IKernel container;
+
+        public SignInPage(IKernel container)
         {
             InitializeComponent();
-            var registrations = new NinjectRegistrations();
-            this.kernel = new StandardKernel(registrations);
+            this.container = container;
         }
 
 
         private void ButtonHomePage_Click(object sender, RoutedEventArgs e)
         {
-
-            HomePage hp = new HomePage(kernel);
+            HomePage hp = new HomePage(container);
             hp.Show();
             this.Hide();
-
         }
 
         protected override void OnClosed(EventArgs e)
@@ -49,7 +47,7 @@ namespace BookDiary.PL
 
         private void ButtonSignIn_Click(object sender, RoutedEventArgs e)
         {
-            IUserService userService = kernel.Get<IUserService>();
+            IUserService userService = container.Get<IUserService>();
             string email = TextboxEmail.Text;
             string password = TextBoxPassword.Password;
 
@@ -58,16 +56,17 @@ namespace BookDiary.PL
                 ErrorLabel.Content = "Any field can not be empty.";
                 return;
             }
+
             if (!userService.IsValidMail(email))
             {
                 ErrorLabel.Content = "The email is not a valid email address.";
                 return;
             }
+
             try
             {
-                HashService Hash = new HashService();
                 var user = userService.Login(email, password);
-                HomePage hp = new HomePage(kernel);
+                HomePage hp = new HomePage(container);
                 hp.Show();
                 this.Hide();
             }
@@ -79,7 +78,7 @@ namespace BookDiary.PL
 
         private void ButtonSignUp_Click(object sender, RoutedEventArgs e)
         {
-            SignUpPage hp = new SignUpPage(kernel);
+            SignUpPage hp = new SignUpPage(container);
             hp.Show();
             this.Hide();
         }

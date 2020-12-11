@@ -14,12 +14,12 @@ namespace BookDiary.DAL.Repositories
         private AppDbContext db;
         private readonly DbSet<Statistic> dbSet;
 
-        public StatisticRepository()
-        {
-            this.db = new AppDbContext();
-            dbSet = db.Set<Statistic>();
-            dbSet.Load();
-        }
+        //public StatisticRepository()
+        //{
+        //    this.db = new AppDbContext();
+        //    dbSet = db.Set<Statistic>();
+        //    dbSet.Load();
+        //}
 
         public StatisticRepository(AppDbContext context)
         {

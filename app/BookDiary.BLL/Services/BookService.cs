@@ -78,11 +78,14 @@ namespace BookDiary.BLL.Services
             {
                 throw new ValidationException("Book id not set", "");
             }
+
             var book = Database.Books.Get(Id.Value);
+
             if (book == null)
             {
                 throw new ValidationException("Book not found", "");
             }
+
             return new BookDTO { Status = (DTO.BookStatus)book.Status, Title = book.Title, Author = book.Author, TotalPages = book.TotalPages, ReadPages = book.ReadPages, Review = book.Review, Mark = book.Mark, UserId = book.UserId };
         }
 
@@ -98,7 +101,9 @@ namespace BookDiary.BLL.Services
             {
                 throw new ValidationException("User id not set", "");
             }
+
             User user = Database.Users.Get(userId.Value);
+
             if (user == null)
             {
                 throw new ValidationException("User not found", "");

@@ -14,12 +14,12 @@ namespace BookDiary.DAL.Repositories
         private AppDbContext db;
         private readonly DbSet<Notification> dbSet;
 
-        public NotificationRepository()
-        {
-            this.db = new AppDbContext();
-            dbSet = db.Set<Notification>();
-            dbSet.Load();
-        }
+        //public NotificationRepository()
+        //{
+        //    this.db = new AppDbContext();
+        //    dbSet = db.Set<Notification>();
+        //    dbSet.Load();
+        //}
 
         public NotificationRepository(AppDbContext context)
         {

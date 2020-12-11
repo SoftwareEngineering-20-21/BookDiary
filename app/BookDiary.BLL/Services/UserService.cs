@@ -20,16 +20,11 @@ namespace BookDiary.BLL.Services
 
         public UserDTO CurrentUser { get; private set; }
 
-        public UserService(IUnitOfWork uow)
+        public UserService(IUnitOfWork uow, IHashService hashService)
         {
             CurrentUser = null;
             Database = uow;
-        }
-
-        // TODO: delete
-        public String GetTitle()
-        {
-            return HashService.GetHash("!!!Homepage");
+            this.HashService = hashService;
         }
 
         public bool IsValidMail(string email)
@@ -52,6 +47,7 @@ namespace BookDiary.BLL.Services
             {
                 throw new ArgumentException("There is no such user with this email");
             }
+
             UserDTO userDto = new UserDTO
             {
                 Id = user.Id,
@@ -60,8 +56,8 @@ namespace BookDiary.BLL.Services
                 Email = user.Email,
                 Password = user.Password
             };
-            HashService Hash = new HashService();
-            if (user != null && Hash.GetHash(password) == user.Password)
+
+            if (user != null && HashService.GetHash(password) == user.Password)
             {
                 CurrentUser = userDto;
             }
@@ -69,21 +65,22 @@ namespace BookDiary.BLL.Services
             {
                 throw new ArgumentException("The email or password is incorrect.");
             }
+
             return CurrentUser;
         }
 
         public UserDTO SignUp(string nickName, string fullName, string email, string password)
         {
             var existUser = Database.Users.Get().FirstOrDefault(x => x.Email == email);
+
             if (existUser == null && IsValidMail(email))
             {
-                HashService Hash = new HashService();
                 User user = new User
                 {
                     Nickname = nickName,
                     Fullname = fullName,
                     Email = email,
-                    Password = Hash.GetHash(password),
+                    Password = HashService.GetHash(password),
                 };
                 Database.Users.Update(user);
                 Database.Save();
@@ -100,16 +97,23 @@ namespace BookDiary.BLL.Services
             {
                 throw new ArgumentException("Phone or mail incorrect");
             }
+
             return CurrentUser;
         }
 
         public UserDTO GetUser(int? Id)
         {
             if (Id == null)
+            {
                 throw new ValidationException("User id not set", "");
+            }
+
             var user = Database.Users.Get(Id.Value);
+
             if (user == null)
+            {
                 throw new ValidationException("User not found", "");
+            }
             return new UserDTO {Nickname = user.Nickname, Fullname=user.Fullname,Email=user.Email};
         }
 

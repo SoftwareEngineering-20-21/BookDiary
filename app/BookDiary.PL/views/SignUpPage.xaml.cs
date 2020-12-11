@@ -12,18 +12,17 @@ namespace BookDiary.PL
     /// </summary>
     public partial class SignUpPage : Window
     {
-        private IKernel kernel;
-        public SignUpPage(IKernel kernel)
+        private IKernel container;
+        public SignUpPage(IKernel container)
         {
             InitializeComponent();
-            this.kernel = kernel;
+            this.container = container;
         }
 
 
         private void ButtonHomePage_Click(object sender, RoutedEventArgs e)
         {
-
-            HomePage hp = new HomePage(kernel);
+            HomePage hp = new HomePage(container);
             hp.Show();
             this.Hide();
         }
@@ -38,7 +37,7 @@ namespace BookDiary.PL
 
         private void ButtonSignUp_Click(object sender, RoutedEventArgs e)
         {
-            IUserService userService = kernel.Get<IUserService>();
+            IUserService userService = container.Get<IUserService>();
             string nickName = TextBoxNickName.Text;
             string fullName = TextBoxFullName.Text;
             string email = TextBoxEmail.Text;
@@ -63,7 +62,7 @@ namespace BookDiary.PL
             try
             {
                 var user = userService.SignUp(nickName, fullName, email, password);
-                HomePage hp = new HomePage(kernel);
+                HomePage hp = new HomePage(container);
                 hp.Show();
                 this.Hide();
             }

@@ -33,12 +33,12 @@ namespace BookDiary.PL
         List<Book> BooksPlanned;
         List<Book> BooksCompleted;
 
-        private IKernel kernel;
+        private IKernel container;
 
-        public HomePage(IKernel kernel)
+        public HomePage(IKernel container)
         {
-            this.kernel = kernel;
-            var currentUser = kernel.Get<IUserService>().CurrentUser;
+            this.container = container;
+            var currentUser = container.Get<IUserService>().CurrentUser;
 
             InitializeComponent();
             if (currentUser != null)
@@ -248,7 +248,7 @@ namespace BookDiary.PL
         private void ButtonSignIn_Click(object sender, RoutedEventArgs e)
         {
 
-            SignInPage sp = new SignInPage();
+            SignInPage sp = new SignInPage(container);
             sp.Show();
             this.Hide();
 
@@ -257,7 +257,7 @@ namespace BookDiary.PL
         private void ButtonSignUp_Click(object sender, RoutedEventArgs e)
         {
 
-            SignUpPage sp = new SignUpPage(kernel);
+            SignUpPage sp = new SignUpPage(container);
             sp.Show();
             this.Hide();
 
