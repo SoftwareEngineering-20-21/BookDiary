@@ -238,7 +238,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="NinjectRegistrations.cs" />
     <Compile Include="views\BookStatisticPage.xaml.cs">
       <DependentUpon>BookStatisticPage.xaml</DependentUpon>
     </Compile>
