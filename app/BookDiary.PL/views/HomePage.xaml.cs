@@ -35,12 +35,16 @@ namespace BookDiary.PL
 
         private IKernel kernel;
 
-        public HomePage()
+        public HomePage(IKernel kernel)
         {
-            var registrations = new NinjectRegistrations();
-            this.kernel = new StandardKernel(registrations);
+            this.kernel = kernel;
+            var currentUser = kernel.Get<IUserService>().CurrentUser;
 
             InitializeComponent();
+            if (currentUser != null)
+            {
+                UserLabel.Content = currentUser.Nickname;
+            }
             bookListStatus = Status.All;
 
             BooksAll = new List<Book>();
@@ -244,7 +248,7 @@ namespace BookDiary.PL
         private void ButtonSignIn_Click(object sender, RoutedEventArgs e)
         {
 
-            SignInPage sp = new SignInPage(kernel);
+            SignInPage sp = new SignInPage();
             sp.Show();
             this.Hide();
 

@@ -23,17 +23,18 @@ namespace BookDiary.PL
     public partial class SignInPage : Window
     {
         private IKernel kernel;
-        public SignInPage(IKernel kernel)
+        public SignInPage()
         {
             InitializeComponent();
-            this.kernel = kernel;
+            var registrations = new NinjectRegistrations();
+            this.kernel = new StandardKernel(registrations);
         }
 
 
         private void ButtonHomePage_Click(object sender, RoutedEventArgs e)
         {
 
-            HomePage hp = new HomePage();
+            HomePage hp = new HomePage(kernel);
             hp.Show();
             this.Hide();
 
@@ -50,7 +51,7 @@ namespace BookDiary.PL
         {
             IUserService userService = kernel.Get<IUserService>();
             string email = TextboxEmail.Text;
-            string password = TextBoxPassword.Text;
+            string password = TextBoxPassword.Password;
 
             if (email.Length == 0 || password.Length == 0)
             {
@@ -65,9 +66,8 @@ namespace BookDiary.PL
             try
             {
                 HashService Hash = new HashService();
-                TextBoxPassword.Text = Hash.GetHash(password);
                 var user = userService.Login(email, password);
-                HomePage hp = new HomePage();
+                HomePage hp = new HomePage(kernel);
                 hp.Show();
                 this.Hide();
             }
