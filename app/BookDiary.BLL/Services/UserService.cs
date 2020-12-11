@@ -48,6 +48,10 @@ namespace BookDiary.BLL.Services
         public UserDTO Login(string email, string password)
         {
             User user = Database.Users.Get().FirstOrDefault(x => x.Email == email);
+            if (user == null)
+            {
+                throw new ArgumentException("There is no such user with this email");
+            }
             UserDTO userDto = new UserDTO
             {
                 Id = user.Id,

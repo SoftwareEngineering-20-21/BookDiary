@@ -23,7 +23,7 @@ namespace BookDiary.PL
         private void ButtonHomePage_Click(object sender, RoutedEventArgs e)
         {
 
-            HomePage hp = new HomePage();
+            HomePage hp = new HomePage(kernel);
             hp.Show();
             this.Hide();
         }
@@ -63,7 +63,7 @@ namespace BookDiary.PL
             try
             {
                 var user = userService.SignUp(nickName, fullName, email, password);
-                HomePage hp = new HomePage();
+                HomePage hp = new HomePage(kernel);
                 hp.Show();
                 this.Hide();
             }

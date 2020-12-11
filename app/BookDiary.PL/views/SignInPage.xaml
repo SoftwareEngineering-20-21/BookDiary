@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookDiary.PL"
         mc:Ignorable="d"
-        Title="SignInPage" Height="600" Width="820">
+        Title="SignInPage" Height="600" Width="820"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
 
         <Style x:Key="LoginInputStyle" TargetType="{x:Type TextBox}">
@@ -131,17 +132,14 @@
                 FontSize="20"
                 FontWeight="Bold"
         />
-        <TextBox
+        <PasswordBox
                 x:Name="TextBoxPassword"
                 Grid.Row="7"
                 Grid.Column="1" 
-                Text=""
-                TextAlignment="Left"
                 VerticalAlignment="Center"
                 Foreground="DimGray"
                 FontSize="24"
                 FontWeight="Bold"
-                TextWrapping="Wrap" Style="{DynamicResource LoginInputStyle}"
         />
 
         <Button 

@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookDiary.PL"
         mc:Ignorable="d"
-        Title="HomePage" Height="600" Width="1000"
-        WindowStartupLocation="CenterScreen">
+        Title="HomePage" Height="600" Width="1000">
     <Window.Resources>
 
         <Style x:Key="Standart" TargetType="TextBlock">
@@ -292,6 +291,24 @@
                     Click="AddBook_Click"
             />
         </Grid>
+        <Canvas
+            Grid.Column="5" 
+            HorizontalAlignment="Left"
+            Height="50" Grid.Row="3" 
+            VerticalAlignment="Top"
+            Width="200">
+            <Label 
+                Name="UserLabel"
+                Content=""
+                Canvas.Left="10" 
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" 
+                FontFamily="Times New Roman"
+                Visibility="Visible" 
+                FontSize="20"
+                Width="180"
+                Height="40" Canvas.Top="10"/>
+        </Canvas>
         <!--
         <Grid 
                 Grid.Row="3" Grid.Column="5">
