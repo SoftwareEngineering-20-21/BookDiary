@@ -7,7 +7,6 @@ namespace BookDiary.BLL.Services
 {
     public class HashService : IHashService
     {
-        //public string password;
         public string GetHash(string password)
         {
             SHA1CryptoServiceProvider sh = new SHA1CryptoServiceProvider();

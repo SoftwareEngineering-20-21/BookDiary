@@ -13,14 +13,8 @@ namespace BookDiary.DAL.Repositories
     public class BookRepository : IRepository<Book>
     {
         private AppDbContext db;
-        private readonly DbSet<Book> dbSet;
 
-        public BookRepository()
-        {
-            this.db = new AppDbContext();
-            dbSet = db.Set<Book>();
-            dbSet.Load();
-        }
+        private readonly DbSet<Book> dbSet;
 
         public BookRepository(AppDbContext context)
         {

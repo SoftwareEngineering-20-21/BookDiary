@@ -1,10 +1,11 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using BookDiary.DAL.Abstractions;
 
 namespace BookDiary.DAL.Interfaces
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T> where T : AbstractEntity
     {
         IEnumerable<T> Get();
         IEnumerable<T> GetAll();

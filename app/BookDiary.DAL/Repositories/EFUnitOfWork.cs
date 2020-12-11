@@ -8,60 +8,24 @@ namespace BookDiary.DAL.Repositories
     public class EFUnitOfWork : IUnitOfWork
     {
         private AppDbContext db;
-        private UserRepository userRepository;
-        private BookRepository bookRepository;
-        private StatisticRepository statisticRepository;
-        private NotificationRepository notificationRepository;
+        public IRepository<User> Users { get; }
+        public IRepository<Book> Books { get; }
+        public IRepository<Notification> Notifications { get; }
+        public IRepository<Statistic> Statistics { get; }
 
-        public EFUnitOfWork()
+        public EFUnitOfWork(
+            AppDbContext dbContext,
+            IRepository<User> userRepository,
+            IRepository<Book> bookRepository,
+            IRepository<Notification> notificationRepository,
+            IRepository<Statistic> statisticRepository)
         {
-            this.db = new AppDbContext();
+            this.db = dbContext;
+            Users = userRepository;
+            Books = bookRepository;
+            Notifications = notificationRepository;
+            Statistics = statisticRepository;
         }
-        public EFUnitOfWork(AppDbContext context)
-        {
-            this.db = context;
-        }
-
-        public IRepository<User> Users
-        {
-            get
-            {
-                if (userRepository == null)
-                    userRepository = new UserRepository(db);
-                return userRepository;
-            }
-        }
-
-        public IRepository<Book> Books
-        {
-            get
-            {
-                if (bookRepository == null)
-                    bookRepository = new BookRepository(db);
-                return bookRepository;
-            }
-        }
-
-        public IRepository<Statistic> Statistics
-        {
-            get
-            {
-                if (statisticRepository == null)
-                    statisticRepository = new StatisticRepository(db);
-                return statisticRepository;
-            }
-        }
-
-        public IRepository<Notification> Notifications
-        {
-            get
-            {
-                if (notificationRepository == null)
-                    notificationRepository = new NotificationRepository(db);
-                return notificationRepository;
-            }
-        }
-
 
         public void Save()
         {
@@ -70,7 +34,7 @@ namespace BookDiary.DAL.Repositories
 
         private bool disposed = false;
 
-        public virtual void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
             {

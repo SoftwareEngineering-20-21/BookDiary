@@ -93,7 +93,9 @@ namespace BookDiary.BLL.Services
             {
                 throw new ValidationException("Book id not set", "");
             }
+
             Book book = Database.Books.Get(bookId.Value);
+
             if (book == null)
             {
                 throw new ValidationException("Book not found", "");
