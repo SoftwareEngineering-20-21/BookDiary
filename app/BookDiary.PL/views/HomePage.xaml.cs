@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -7,9 +8,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using BookDiary.DAL.Entities;
-using BookDiary.BLL.Infrastructure;
-using BookDiary.BLL.Services;
 using BookDiary.BLL.Interfaces;
+using BookDiary.BLL.DTO;
 using Ninject;
 
 namespace BookDiary.PL
@@ -28,74 +28,41 @@ namespace BookDiary.PL
     public partial class HomePage : Window
     {
         Status bookListStatus;
-        List<Book> BooksAll;
-        List<Book> BooksInProgress;
-        List<Book> BooksPlanned;
-        List<Book> BooksCompleted;
+        List<BookDTO> BooksAll;
+        List<BookDTO> BooksInProgress;
+        List<BookDTO> BooksPlanned;
+        List<BookDTO> BooksCompleted;
 
         private IKernel container;
+
+        private IBookService bookService;
 
         public HomePage(IKernel container)
         {
             this.container = container;
             var currentUser = container.Get<IUserService>().CurrentUser;
+            bookService = container.Get<IBookService>();
 
             InitializeComponent();
             if (currentUser != null)
             {
                 UserLabel.Content = currentUser.Nickname;
             }
+
+            ShowBooks();
+        }
+
+        private void ShowBooks()
+        {
             bookListStatus = Status.All;
 
-            BooksAll = new List<Book>();
-            BooksInProgress = new List<Book>();
-            BooksPlanned = new List<Book>();
-            BooksCompleted = new List<Book>();
-
-            /// TAKE BookAll, BookInProgress, BookToRead, BookDone FROM DATA BASE !!!!!!
-            {
-                Book book1 = new Book();
-                book1.Status = BookStatus.Completed;
-                book1.Title = "Knyzka1";
-                book1.Author = "Chuvak1";
-                book1.TotalPages = 300;
-
-                Book book2 = new Book();
-                book2.Status = BookStatus.Completed;
-                book2.Title = "Knyzka2";
-                book2.Author = "Chuvak2";
-                book2.TotalPages = 273;
-
-                Book book3 = new Book();
-                book3.Status = BookStatus.Planned;
-                book3.Title = "Knyzka3";
-                book3.Author = "Chuvak3";
-                book3.TotalPages = 0;
-
-                Book book4 = new Book();
-                book4.Status = BookStatus.InProgress;
-                book4.Title = "Knyzka4";
-                book4.Author = "Chuvak4";
-                book4.TotalPages = 1000;
-
-                BooksAll.Add(book1);
-                BooksAll.Add(book2);
-                BooksAll.Add(book3);
-                BooksAll.Add(book4);
-                BooksPlanned.Add(book3);
-                BooksInProgress.Add(book4);
-                BooksCompleted.Add(book1);
-                BooksCompleted.Add(book2);
-            }
+            IEnumerable<BookDTO> Books = bookService.GetBooks();
+            BooksAll = Books.ToList();
+            BooksInProgress = BooksAll.Where(x => x.Status == BookStatus.InProgress).ToList();
+            BooksPlanned = BooksAll.Where(x => x.Status == BookStatus.Planned).ToList();
+            BooksCompleted = BooksAll.Where(x => x.Status == BookStatus.Completed).ToList();
 
             ButtonAll.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
-
-            /*
-            BookIcon bookIcon = new BookIcon(book1);
-            BooksGrid.Children.Add(bookIcon);
-            TextBlock tb = new TextBlock();
-            tb.Text = "abracadabra";
-            */
         }
 
         private void ButtonAll_Click(object sender, RoutedEventArgs e)
@@ -107,7 +74,7 @@ namespace BookDiary.PL
             ButtonCompleted.Background = Brushes.White;
 
             booksWrap.Children.Clear();
-            foreach (Book book in BooksAll)
+            foreach (BookDTO book in BooksAll)
             {
                 BookIcon bi = new BookIcon(book);
                 bi.Click += (x, y) => ShowBookPage(book);
@@ -116,9 +83,9 @@ namespace BookDiary.PL
 
         }
 
-        private void ShowBookPage(Book book)
+        private void ShowBookPage(BookDTO book)
         {
-            BookPage bp = new BookPage(book);
+            BookPage bp = new BookPage(container, book);
             bp.Show();
         }
 
@@ -143,7 +110,7 @@ namespace BookDiary.PL
             ButtonCompleted.Background = Brushes.White;
 
             booksWrap.Children.Clear();
-            foreach (Book book in BooksPlanned)
+            foreach (BookDTO book in BooksPlanned)
                 booksWrap.Children.Add(new BookIcon(book));
         }
         private void ButtonPlanned_MouseEnter(object sender, MouseEventArgs e)
@@ -167,7 +134,7 @@ namespace BookDiary.PL
             ButtonCompleted.Background = Brushes.White;
 
             booksWrap.Children.Clear();
-            foreach (Book book in BooksInProgress)
+            foreach (BookDTO book in BooksInProgress)
                 booksWrap.Children.Add(new BookIcon(book));
         }
 
@@ -191,7 +158,7 @@ namespace BookDiary.PL
             ButtonCompleted.Background = Brushes.LightGray;
 
             booksWrap.Children.Clear();
-            foreach (Book book in BooksCompleted)
+            foreach (BookDTO book in BooksCompleted)
                 booksWrap.Children.Add(new BookIcon(book));
         }
 
@@ -266,14 +233,14 @@ namespace BookDiary.PL
 
         private void AddBook_Click(object sender, RoutedEventArgs e)
         {
-            AddBookPage ab = new AddBookPage();
+            AddBookPage ab = new AddBookPage(container);
             ab.Show();
         }
 
         private void SearchTextBox_DragEnter(object sender, DragEventArgs e)
         {
             string titleSearched = SearchTextBox.Text;
-            foreach(Book book in BooksAll)
+            foreach(BookDTO book in BooksAll)
                 if (book.Title == titleSearched)
                 {
                     ShowBookPage(book);
@@ -287,7 +254,7 @@ namespace BookDiary.PL
             if (e.Key == Key.Enter)
             {
                 string titleSearched = SearchTextBox.Text;
-                foreach (Book book in BooksAll)
+                foreach (BookDTO book in BooksAll)
                     if (book.Title == titleSearched)
                     {
                         ShowBookPage(book);
@@ -304,7 +271,7 @@ namespace BookDiary.PL
         public TextBlock textBlock;
         public Grid grid;
 
-        public BookIcon(Book book)
+        public BookIcon(BookDTO book)
         {
             this.Width = 190;
             this.Height = 250;

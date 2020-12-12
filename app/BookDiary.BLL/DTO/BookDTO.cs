@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using BookDiary.DAL.Entities;
 
 namespace BookDiary.BLL.DTO
 {
-    public enum BookStatus
-    {
-        InProgress,
-        Completed,
-        Planned
-    }
-
     public class BookDTO
     {
         public int Id { get; set; }

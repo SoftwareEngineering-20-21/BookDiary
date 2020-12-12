@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows;
-using BookDiary.DAL.Entities;
+using BookDiary.BLL.DTO;
+using BookDiary.BLL.Interfaces;
+using Ninject;
 
 namespace BookDiary.PL
 {
@@ -9,21 +11,25 @@ namespace BookDiary.PL
     /// </summary>
     public partial class BookPage : Window
     {
-        public BookPage(Book book)
+        private BookDTO book;
+
+        private IBookService bookService;
+        public BookPage(IKernel container, BookDTO book)
         {
+            this.bookService = container.Get<IBookService>();
             InitializeComponent();
 
             title.Text = book.Title;
             totalPages.Text = Convert.ToString(book.TotalPages);
             author.Text = book.Author;
-            /// INITIALIZATE A BOOK !!!!!!!!
-            
 
+            this.book = book;
         }
 
         private void DeleteBook_Click(object sender, RoutedEventArgs e)
         {
-           
+            bookService.DeleteBook(book);
+            this.Hide();
         }
 
         private void StatisticBook_Click(object sender, RoutedEventArgs e)
