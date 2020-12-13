@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookDiary.PL"
         mc:Ignorable="d"
-        Title="HomePage" Height="600" Width="1000">
+        Title="HomePage" Height="600" Width="1000"
+        WindowStartupLocation="Manual" 
+        Left="10" Top="10">
     <Window.Resources>
 
         <Style x:Key="Standart" TargetType="TextBlock">

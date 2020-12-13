@@ -27,12 +27,46 @@ namespace BookDiary.PL
 
         private BookDTO book;
 
+        private readonly INotificationService notificationService;
+
         public BookNotificationPage(IKernel container, BookDTO book)
         {
             this.container = container;
+            this.notificationService = container.Get<INotificationService>();
             this.book = book;
 
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            int bookId = book.Id;
+            string message = TextBoxMessage.Text;
+            DateTime? calendarDay = Calendar.SelectedDate;
+            try 
+            {
+                if (calendarDay == null)
+                {
+                    ErrorLabel.Content = "Date is nit setted";
+                    throw new Exception("Date is not setted");
+                }
+                // Notification will be sent at 12 pm
+                DateTimeOffset day = new DateTimeOffset((DateTime)calendarDay, new TimeSpan(12, 0, 0));
+                
+                notificationService.CreateNotification(
+                   new NotificationDTO
+                   {
+                       Message = message,
+                       Day = day,
+                       BookId = bookId
+                   }
+                );
+                this.Close();
+            }
+            catch(Exception ex)
+            {
+                ErrorLabel.Content = ex.Message;
+            }
         }
     }
 }

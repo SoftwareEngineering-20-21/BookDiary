@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookDiary.PL"
         mc:Ignorable="d"
-        Title="BookPage" Height="600" Width="400">
+        Title="BookPage" Height="600" Width="400"
+        WindowStartupLocation="Manual" 
+        Left="20" Top="20">
 
     <Window.Resources>
         <Style x:Key="Standart" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Times New Roman"/>
-            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontSize" Value="18"/>
         </Style>
     </Window.Resources>
 
@@ -36,16 +38,25 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Style="{StaticResource Standart}" Text="Total number of pages" Margin="10,15,134.373,284"/>
-                    <TextBlock x:Name="totalPages" Style="{StaticResource Standart}"  Margin="0,15,0.333,0" Text="0" TextAlignment="Center" Width="80" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="totalPages" Style="{StaticResource Standart}"  Margin="0,16,14,0" Text="0" TextAlignment="Center" Width="Auto" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right"/>
                     <TextBlock Style="{StaticResource Standart}" Text="Author" Margin="10,48,134.373,254"/>
-                    <TextBlock x:Name="author" Style="{StaticResource Standart}"  Margin="199,48,0.333,0" Text="0" TextAlignment="Center" Width="80" Height="17" VerticalAlignment="Top"/>
-                    <TextBlock Style="{StaticResource Standart}"  Text="Number of read pages" Margin="10,80,134.373,0" Height="18" VerticalAlignment="Top"/>
-                    <TextBlock x:Name="readPages" Style="{StaticResource Standart}"  Margin="198,80,1.373,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" TextAlignment="Center" Width="80"/>
-                    <TextBlock Style="{StaticResource Standart}"  Text="Today read pages" Margin="10,114,134.373,0" Height="16" VerticalAlignment="Top"/>
-                    <TextBlock x:Name="todayReadPages" Style="{StaticResource Standart}"  Margin="199,114,0.333,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" TextAlignment="Center" Width="80"/>
+                    <TextBlock x:Name="author" Style="{StaticResource Standart}"  Margin="189,48,14,0" Text="" TextAlignment="Center" Height="20" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Right"/>
+                    <TextBlock Style="{StaticResource Standart}"  Text="Number of read pages" Margin="10,80,134.373,0" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="readPages" Style="{StaticResource Standart}"  Margin="189,80,14,0" TextWrapping="Wrap" Text="0" TextAlignment="Center" Height="20" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Right"/>
+                    <TextBlock Style="{StaticResource Standart}"  Text="Today read pages" Margin="10,114,134.373,0" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="todayReadPages" Style="{StaticResource Standart}"  Margin="189,114,14,0" TextWrapping="Wrap" Text="0" TextAlignment="Center" Height="20" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Right"/>
                     <TextBlock Style="{StaticResource Standart}"  Text="Review" Margin="10,147,134.373,36"/>
-                    <TextBox x:Name="Review" FontSize="14" VerticalScrollBarVisibility="Visible"  FontFamily="Times New Roman" IsReadOnly="True" BorderThickness="0" Text="...." Margin="10,0,1.373,45" Height="100" VerticalAlignment="Bottom"/>
-                    <Button HorizontalAlignment="Left" Click="DeleteBook_Click" Background="White" VerticalAlignment="Bottom" BorderThickness="0" Width="34" Height="35">
+                    <ScrollViewer Margin="10,173,10,0" Height="107" Width="280" VerticalAlignment="Top">
+                        <TextBox 
+                            x:Name="Review" 
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                            ScrollViewer.VerticalScrollBarVisibility="Auto"
+                            FontSize="18" FontFamily="Times New Roman" 
+                            BorderThickness="0" 
+                            TextWrapping="Wrap"
+                            Text="..."
+                        />
+                    </ScrollViewer><Button HorizontalAlignment="Left" Click="DeleteBook_Click" Background="White" VerticalAlignment="Bottom" BorderThickness="0" Width="34" Height="35">
                         <Image Source="../resource/delete-icon.png" Height="31" Width="29"/>
                     </Button>
                     <Button  HorizontalAlignment="Left" Margin="39,0,0,0" Background="White" BorderThickness="0" VerticalAlignment="Bottom" Width="34" Height="35" Click="NotificationBook_Click">
@@ -54,12 +65,10 @@
                     <Button  HorizontalAlignment="Left" Click="StatisticBook_Click" Background="White" BorderThickness="0" Margin="78,0,0,0" VerticalAlignment="Bottom" Width="34" Height="35" RenderTransformOrigin="2.441,0.371">
                         <Image Source="../resource/11.png"/>
                     </Button>
-                    <Button Content="Edit" FontWeight="Bold" FontSize="14" Height="35" Margin="131,0,76.373,0" VerticalAlignment="Bottom" RenderTransformOrigin="-0.634,0.466"/>
-                    <Button Content="Save" FontWeight="Bold" FontSize="14" Foreground="White" Background="Black" Height="35" Margin="-63.373,0,0,0" VerticalAlignment="Bottom" RenderTransformOrigin="0.212,-1.236" Grid.Column="1"/>
+                    <Button Content="Edit" FontWeight="Bold" FontSize="18" Height="35" Margin="131,0,93,0" VerticalAlignment="Bottom" RenderTransformOrigin="-0.634,0.466"/>
+                    <Button Content="Save" FontWeight="Bold" FontSize="18" Foreground="White" Background="Black" Height="35" Margin="223,0,1,0" VerticalAlignment="Bottom" RenderTransformOrigin="0.212,-1.236"/>
                 </Grid>
             </StackPanel>
-
         </StackPanel>
-
     </Grid>
 </Window>

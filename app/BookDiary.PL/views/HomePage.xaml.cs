@@ -177,11 +177,9 @@ namespace BookDiary.PL
 
         private void ButtonNotifications_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            NotificationsPage np = new NotificationsPage();
+            NotificationsPage np = new NotificationsPage(container);
             np.Show();
             this.Hide();
-            */
         }
 
         private void ButtonNotifications_MouseEnter(object sender, MouseEventArgs e)
@@ -265,9 +263,9 @@ namespace BookDiary.PL
 
     public class BookIcon: Button
     {
-        public Image image;
-        public TextBlock textBlock;
-        public Grid grid;
+        private Image image;
+        private TextBlock textBlock;
+        private Grid grid;
 
         public BookIcon(BookDTO book)
         {
@@ -316,7 +314,7 @@ namespace BookDiary.PL
             grid.Children.Add(image);
            
 
-            TextBlock textBlock = new TextBlock();
+            textBlock = new TextBlock();
             textBlock.Text = book.Title;
             textBlock.FontFamily = new FontFamily("Times New Roman");
             textBlock.FontSize = 14;

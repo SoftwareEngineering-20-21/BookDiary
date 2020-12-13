@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookDiary.PL"
         mc:Ignorable="d"
-        Title="AddBookPage" Height="300" Width="800">
+        Title="AddBookPage" Height="300" Width="600"
+        WindowStartupLocation="Manual" 
+        Left="20" Top="20">
 
     <Window.Resources>
         <Style x:Key="StandartLabel" TargetType="Label">
@@ -25,7 +27,7 @@
             <Setter Property="Height" Value="25"/>
         </Style>
     </Window.Resources>
-    
+
     <Grid>
         <Label
             Content="Enter book title:"
@@ -63,11 +65,9 @@
             FontSize="18"
             FontFamily="Times New Roman"
             BorderThickness="0"
-            HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
-            Width="126"
             Height="30"
             Click="ButtonCreate_Click" 
-            Margin="334,0,333.333,9.667"/>
+            Margin="234,0,233.333,9.667"/>
     </Grid>
 </Window>
