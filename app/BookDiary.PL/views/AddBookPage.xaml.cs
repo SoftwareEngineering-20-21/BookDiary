@@ -44,7 +44,7 @@ namespace BookDiary.PL
                 );
             }
 
-            this.Hide();
+            this.Close();
         }
     }
 }

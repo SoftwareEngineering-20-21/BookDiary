@@ -238,13 +238,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="views\BookNotificationPage.xaml.cs">
+      <DependentUpon>BookNotificationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\BookStatisticPage.xaml.cs">
       <DependentUpon>BookStatisticPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\NotificationsPage.xaml.cs">
+      <DependentUpon>NotificationsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\StatisticsPage.xaml.cs">
       <DependentUpon>StatisticsPage.xaml</DependentUpon>
     </Compile>
     <Page Include="views\AddBookPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\BookNotificationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -284,9 +294,6 @@
     </Compile>
     <Compile Include="views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="views\NotificationsPage.xaml.cs">
-      <DependentUpon>NotificationsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\SignInPage.xaml.cs">
       <DependentUpon>SignInPage.xaml</DependentUpon>

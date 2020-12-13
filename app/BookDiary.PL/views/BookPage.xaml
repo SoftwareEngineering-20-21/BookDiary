@@ -48,7 +48,7 @@
                     <Button HorizontalAlignment="Left" Click="DeleteBook_Click" Background="White" VerticalAlignment="Bottom" BorderThickness="0" Width="34" Height="35">
                         <Image Source="../resource/delete-icon.png" Height="31" Width="29"/>
                     </Button>
-                    <Button  HorizontalAlignment="Left" Margin="39,0,0,0" Background="White" BorderThickness="0" VerticalAlignment="Bottom" Width="34" Height="35">
+                    <Button  HorizontalAlignment="Left" Margin="39,0,0,0" Background="White" BorderThickness="0" VerticalAlignment="Bottom" Width="34" Height="35" Click="NotificationBook_Click">
                         <Image Source="../resource/10.png"/>
                     </Button>
                     <Button  HorizontalAlignment="Left" Click="StatisticBook_Click" Background="White" BorderThickness="0" Margin="78,0,0,0" VerticalAlignment="Bottom" Width="34" Height="35" RenderTransformOrigin="2.441,0.371">
