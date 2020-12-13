@@ -6,79 +6,68 @@
         xmlns:local="clr-namespace:BookDiary.PL"
         mc:Ignorable="d"
         Title="AddBookPage" Height="300" Width="800">
+
+    <Window.Resources>
+        <Style x:Key="StandartLabel" TargetType="Label">
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Width" Value="Auto"/>
+        </Style>
+
+        <Style x:Key="StandartTextBox" TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Height" Value="25"/>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
         <Label
             Content="Enter book title:"
-            FontSize="18"
-            FontFamily="Arial"
-            HorizontalAlignment="Left"
-            Margin="10,10,0,0"
-            VerticalAlignment="Top"
-            Width="159"/>
+            Style="{StaticResource StandartLabel}"
+            Margin="10,10,0,0"/>
         <TextBox
             x:Name="BookTitle"
-            HorizontalAlignment="Left"
-            Height="22"
+            Style="{StaticResource StandartTextBox}"
             Margin="10,41,0,0"
-            TextWrapping="Wrap"
             Text=""
-            VerticalAlignment="Top"
-            Width="284"
             RenderTransformOrigin="-1.554,2.182"/>
         <Label
             Content="Enter author name:"
-            FontSize="18"
-            FontFamily="Arial"
-            HorizontalAlignment="Left"
+            Style="{StaticResource StandartLabel}"
             Margin="10,68,0,0"
-            VerticalAlignment="Top"
-            Width="174"
             RenderTransformOrigin="0.44,2.919"/>
         <TextBox
             x:Name="AuthorName"
-            HorizontalAlignment="Left"
-            Height="22"
+            Style="{StaticResource StandartTextBox}"
             Margin="10,104,0,0"
-            TextWrapping="Wrap"
             Text=""
-            VerticalAlignment="Top"
-            Width="284"
             RenderTransformOrigin="-1.554,2.182"/>
         <Label
             Content="Enter number of pages:"
-            FontSize="18"
-            FontFamily="Arial"
-            HorizontalAlignment="Left"
+            Style="{StaticResource StandartLabel}"
             Margin="10,131,0,0"
-            VerticalAlignment="Top"
-            Width="214"
             RenderTransformOrigin="0.44,2.919"/>
         <TextBox
             x:Name="NumberOfPages"
-            HorizontalAlignment="Left"
-            Height="22"
+            Style="{StaticResource StandartTextBox}"
             Margin="10,167,0,0"
-            TextWrapping="Wrap"
-            Text=""
-            VerticalAlignment="Top"
-            Width="284"
             RenderTransformOrigin="-1.554,2.182"/>
-        <Button HorizontalAlignment="Left" Background="White" BorderThickness="0" Margin="10,217,0,0" VerticalAlignment="Top" Width="40" Height="40">
-            <Image Source="../resource/1.png"></Image>
-        </Button>
-        <Button HorizontalAlignment="Left" Background="White" BorderThickness="0" Margin="64,217,0,0" VerticalAlignment="Top" Width="40" Height="40">
-            <Image Source="../resource/10.png"></Image>
-        </Button>
         <Button
             Content="Create"
             FontSize="18"
-            FontFamily="Arial"
+            FontFamily="Times New Roman"
             BorderThickness="0"
-            HorizontalAlignment="Left"
-            Margin="356,217,0,0"
-            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
             Width="126"
             Height="30"
-            Click="ButtonCreate_Click"/>
+            Click="ButtonCreate_Click" 
+            Margin="334,0,333.333,9.667"/>
     </Grid>
 </Window>

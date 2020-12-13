@@ -5,16 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookDiary.PL"
         mc:Ignorable="d"
-        Title="SignInPage" Height="600" Width="820"
+        Title="SignInPage" Height="400" Width="600"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
 
         <Style x:Key="LoginInputStyle" TargetType="{x:Type TextBox}">
-            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Foreground" Value="DimGray"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="AllowDrop" Value="true"/>
             <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
@@ -54,15 +56,14 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="15"></RowDefinition>
-            <RowDefinition Height="90"></RowDefinition>
-            <RowDefinition Height="55"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="10"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="10"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
@@ -74,16 +75,11 @@
             <ColumnDefinition Width="30"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
-            <Button Height="40" Width="40" Background="Transparent" Click="ButtonHomePage_Click">
-                <StackPanel>
-                    <TextBlock>
-                        <Image Source="../resource/logo.png"/>
-                    </TextBlock>
-                </StackPanel>
-            </Button>
+            <Image Source="../resource/logo.png"/>
             <TextBlock 
                     VerticalAlignment="Center" HorizontalAlignment="Left"
                     TextAlignment="Center"
+                    FontFamily="Times New Roman"
                     FontWeight="Bold"
                     FontSize="40"
                     Text="BooksDiary"
@@ -105,45 +101,38 @@
                 VerticalAlignment="Center" 
                 Text="Email"
                 Foreground="Black"
+                FontFamily="Times New Roman"
                 FontSize="20"
                 FontWeight="Bold"
         />
-       
-
         <TextBox 
                 x:Name="TextboxEmail"
                 Grid.Row="4"
                 Grid.Column="1"
                 Text=""
-                TextAlignment="Left"
-                VerticalAlignment="Center" 
-                Foreground="DimGray"
-                FontSize="24"
-                FontWeight="Bold"
                 TextWrapping="Wrap" Style="{DynamicResource LoginInputStyle}"
-                
-            />
+        />
         <TextBlock 
                 Grid.Column="1"
-                Grid.Row="6"
+                Grid.Row="5"
                 VerticalAlignment="Center" HorizontalAlignment="Left"
                 Text="Password"
                 Foreground="Black"
+                FontFamily="Times New Roman"
                 FontSize="20"
                 FontWeight="Bold"
         />
         <PasswordBox
                 x:Name="TextBoxPassword"
-                Grid.Row="7"
+                Grid.Row="6"
                 Grid.Column="1" 
                 VerticalAlignment="Center"
                 Foreground="DimGray"
-                FontSize="24"
-                FontWeight="Bold"
+                FontFamily="Times New Roman"
+                FontSize="20"
         />
-
         <Button 
-            Grid.Row="9"
+            Grid.Row="8"
             Grid.Column="1"
             x:Name="ButtonSignIn"
             Style="{DynamicResource StartPageButtonStyle}"
@@ -152,11 +141,8 @@
             BorderBrush="Black"
             Content="Sing in"
             Height="50"
-            Width="200" Click="ButtonSignIn_Click"
-            
+            Width="200" Click="ButtonSignIn_Click"   
          />
-        
-
         <Button 
             Grid.Row="11"
             Grid.Column="1"

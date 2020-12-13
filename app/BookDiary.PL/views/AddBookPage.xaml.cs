@@ -3,6 +3,7 @@ using System;
 using System.Windows;
 using BookDiary.BLL.Interfaces;
 using BookDiary.BLL.DTO;
+using BookDiary.DAL.Entities;
 
 namespace BookDiary.PL
 {
@@ -36,6 +37,7 @@ namespace BookDiary.PL
                         Title = BookTitle.Text,
                         Author = AuthorName.Text,
                         TotalPages = (int)totalPages,
+                        Status = BookStatus.Planned,
                         ReadPages = 0,
                         Review = "",
                     }
