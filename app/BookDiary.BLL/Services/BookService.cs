@@ -86,7 +86,7 @@ namespace BookDiary.BLL.Services
                 throw new ValidationException("Book not found", "");
             }
 
-            return new BookDTO { Status = (DTO.BookStatus)book.Status, Title = book.Title, Author = book.Author, TotalPages = book.TotalPages, ReadPages = book.ReadPages, Review = book.Review, Mark = book.Mark, UserId = book.UserId };
+            return new BookDTO { Status = (BookStatus)book.Status, Title = book.Title, Author = book.Author, TotalPages = book.TotalPages, ReadPages = book.ReadPages, Review = book.Review, Mark = book.Mark, UserId = book.UserId };
         }
 
         public IEnumerable<BookDTO> GetBooks()

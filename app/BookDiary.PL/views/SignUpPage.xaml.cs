@@ -1,8 +1,6 @@
 ﻿using System;
 using Ninject;
-using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls;
 using BookDiary.BLL.Interfaces;
 
 namespace BookDiary.PL
@@ -19,14 +17,12 @@ namespace BookDiary.PL
             this.container = container;
         }
 
-
         private void ButtonHomePage_Click(object sender, RoutedEventArgs e)
         {
             HomePage hp = new HomePage(container);
             hp.Show();
             this.Hide();
         }
-
 
         protected override void OnClosed(EventArgs e)
         {
