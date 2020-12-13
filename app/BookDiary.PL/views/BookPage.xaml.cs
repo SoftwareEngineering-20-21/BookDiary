@@ -34,7 +34,16 @@ namespace BookDiary.PL
             bookService.DeleteBook(book);
             this.Hide();
         }
+        private void EditBook_Click(object sender, RoutedEventArgs e)
+        {
+            EditBookPage eb = new EditBookPage();
+            eb.Show();
 
+        }
+        private void SaveBook_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         private void NotificationBook_Click(object sender, RoutedEventArgs e)
         {
             BookNotificationPage bn = new BookNotificationPage(container, book);
