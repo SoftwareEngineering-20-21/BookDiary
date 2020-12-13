@@ -37,10 +37,12 @@ namespace BookDiary.PL
 
         private IBookService bookService;
 
+        UserDTO currentUser;
+
         public HomePage(IKernel container)
         {
             this.container = container;
-            var currentUser = container.Get<IUserService>().CurrentUser;
+            currentUser = container.Get<IUserService>().CurrentUser;
             bookService = container.Get<IBookService>();
 
             InitializeComponent();
@@ -57,10 +59,10 @@ namespace BookDiary.PL
             bookListStatus = Status.All;
 
             IEnumerable<BookDTO> Books = bookService.GetBooks();
-            BooksAll = Books.ToList();
-            BooksInProgress = BooksAll.Where(x => x.Status == BookStatus.InProgress).ToList();
-            BooksPlanned = BooksAll.Where(x => x.Status == BookStatus.Planned).ToList();
-            BooksCompleted = BooksAll.Where(x => x.Status == BookStatus.Completed).ToList();
+            BooksAll = Books.Where(x => x.UserId == currentUser.Id).ToList();
+            BooksInProgress = BooksAll.Where(x => x.UserId == currentUser.Id && x.Status == BookStatus.InProgress).ToList();
+            BooksPlanned = BooksAll.Where(x => x.UserId == currentUser.Id && x.Status == BookStatus.Planned).ToList();
+            BooksCompleted = BooksAll.Where(x => x.UserId == currentUser.Id && x.Status == BookStatus.Completed).ToList();
 
             ButtonAll.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
         }
@@ -80,7 +82,6 @@ namespace BookDiary.PL
                 bi.Click += (x, y) => ShowBookPage(book);
                 booksWrap.Children.Add(bi);
             }
-
         }
 
         private void ShowBookPage(BookDTO book)
@@ -176,11 +177,9 @@ namespace BookDiary.PL
 
         private void ButtonNotifications_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            NotificationsPage np = new NotificationsPage();
+            NotificationsPage np = new NotificationsPage(container);
             np.Show();
             this.Hide();
-            */
         }
 
         private void ButtonNotifications_MouseEnter(object sender, MouseEventArgs e)
@@ -218,23 +217,20 @@ namespace BookDiary.PL
             SignInPage sp = new SignInPage(container);
             sp.Show();
             this.Hide();
-
         }
 
         private void ButtonSignUp_Click(object sender, RoutedEventArgs e)
         {
-
             SignUpPage sp = new SignUpPage(container);
             sp.Show();
             this.Hide();
-
-
         }      
 
         private void AddBook_Click(object sender, RoutedEventArgs e)
         {
             AddBookPage ab = new AddBookPage(container);
             ab.Show();
+            ab.Closed += new EventHandler((object s, EventArgs ee) => { ShowBooks(); });
         }
 
         private void SearchTextBox_DragEnter(object sender, DragEventArgs e)
@@ -267,9 +263,9 @@ namespace BookDiary.PL
 
     public class BookIcon: Button
     {
-        public Image image;
-        public TextBlock textBlock;
-        public Grid grid;
+        private Image image;
+        private TextBlock textBlock;
+        private Grid grid;
 
         public BookIcon(BookDTO book)
         {
@@ -318,7 +314,7 @@ namespace BookDiary.PL
             grid.Children.Add(image);
            
 
-            TextBlock textBlock = new TextBlock();
+            textBlock = new TextBlock();
             textBlock.Text = book.Title;
             textBlock.FontFamily = new FontFamily("Times New Roman");
             textBlock.FontSize = 14;
@@ -332,7 +328,7 @@ namespace BookDiary.PL
             if (book.Status == BookStatus.Completed)
             {
                 Image isCompleted = new Image();
-                isCompleted.Source = new BitmapImage(new Uri("resource/done-icon-3.png", UriKind.Relative));
+                isCompleted.Source = new BitmapImage(new Uri("../resource/done-icon-3.png", UriKind.Relative));
                 isCompleted.HorizontalAlignment = HorizontalAlignment.Center;
                 isCompleted.VerticalAlignment = VerticalAlignment.Center;
                 isCompleted.HorizontalAlignment = HorizontalAlignment.Center;

@@ -17,13 +17,6 @@ namespace BookDiary.PL
             this.container = container;
         }
 
-        private void ButtonHomePage_Click(object sender, RoutedEventArgs e)
-        {
-            HomePage hp = new HomePage(container);
-            hp.Show();
-            this.Hide();
-        }
-
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);

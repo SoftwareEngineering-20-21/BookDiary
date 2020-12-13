@@ -13,9 +13,12 @@ namespace BookDiary.PL
     {
         private BookDTO book;
 
+        private IKernel container;
+
         private IBookService bookService;
         public BookPage(IKernel container, BookDTO book)
         {
+            this.container = container;
             this.bookService = container.Get<IBookService>();
             InitializeComponent();
 
@@ -30,6 +33,21 @@ namespace BookDiary.PL
         {
             bookService.DeleteBook(book);
             this.Hide();
+        }
+        private void EditBook_Click(object sender, RoutedEventArgs e)
+        {
+            EditBookPage eb = new EditBookPage();
+            eb.Show();
+
+        }
+        private void SaveBook_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void NotificationBook_Click(object sender, RoutedEventArgs e)
+        {
+            BookNotificationPage bn = new BookNotificationPage(container, book);
+            bn.Show();
         }
 
         private void StatisticBook_Click(object sender, RoutedEventArgs e)
