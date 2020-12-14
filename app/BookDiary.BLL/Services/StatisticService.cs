@@ -6,6 +6,7 @@ using BookDiary.BLL.Infrastructure;
 using BookDiary.BLL.Interfaces;
 using System.Collections.Generic;
 using AutoMapper;
+using System.Linq;
 
 namespace BookDiary.BLL.Services
 {
@@ -20,15 +21,24 @@ namespace BookDiary.BLL.Services
 
         public void CreateStatistic(StatisticDTO statisticDto)
         {
-            Statistic statistic = new Statistic
+            var stat = Database.Statistics.Get().FirstOrDefault(x => x.Day == statisticDto.Day);
+            if (stat==null)
             {
-                Day = statisticDto.Day,
-                OldPages = statisticDto.OldPages,
-                NewPages = statisticDto.NewPages,
-                BookId = statisticDto.BookId
-            };
+                Statistic statistic = new Statistic
+                {
+                    Day = statisticDto.Day,
+                    OldPages = statisticDto.OldPages,
+                    NewPages = statisticDto.NewPages,
+                    BookId = statisticDto.BookId
+                };
+                Database.Statistics.Create(statistic);
+            }
+            else
+            {
+                UpdateStatistic(statisticDto);
+            }
 
-            Database.Statistics.Create(statistic);
+            
             Database.Save();
         }
 

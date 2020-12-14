@@ -13,19 +13,21 @@ namespace BookDiary.PL
     public partial class BookPage : Window
     {
         private BookDTO book;
-
+        private StatisticDTO statistic;
         private IKernel container;
-
         private IBookService bookService;
+
         public BookPage(IKernel container, BookDTO book)
         {
             this.container = container;
             this.bookService = container.Get<IBookService>();
+            
             InitializeComponent();
 
             title.Text = book.Title;
             totalPages.Text = Convert.ToString(book.TotalPages);
             author.Text = book.Author;
+            readPages.Text = book.ReadPages.ToString();
 
             this.book = book;
         }
@@ -37,8 +39,7 @@ namespace BookDiary.PL
         }
         private void EditBook_Click(object sender, RoutedEventArgs e)
         {
-            EditBookPage eb = new EditBookPage(this.book.Title, this.book.Author, Convert.ToString(this.book.TotalPages), this);
-
+            EditBookPage eb = new EditBookPage(container,book);
             eb.Show();
 
         }
