@@ -32,7 +32,7 @@
                         TextAlignment="Center" 
                         FontSize="16" FontFamily="Times New Roman" 
                         FontWeight="Bold"/>
-                <Grid Height="320">
+                <Grid Height="331">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="31*"/>
                         <ColumnDefinition/>
@@ -45,8 +45,10 @@
                     <TextBlock x:Name="readPages" Style="{StaticResource Standart}"  Margin="189,80,14,0" TextWrapping="Wrap" Text="0" TextAlignment="Center" Height="20" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Right"/>
                     <TextBlock Style="{StaticResource Standart}"  Text="Today read pages" Margin="10,114,134.373,0" VerticalAlignment="Top"/>
                     <TextBlock x:Name="todayReadPages" Style="{StaticResource Standart}"  Margin="189,114,14,0" TextWrapping="Wrap" Text="0" TextAlignment="Center" Height="20" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Right"/>
-                    <TextBlock Style="{StaticResource Standart}"  Text="Review" Margin="10,147,134.373,36"/>
-                    <ScrollViewer Margin="10,173,10,0" Height="107" Width="280" VerticalAlignment="Top">
+                    <TextBlock Style="{StaticResource Standart}"  Text="Mark" Margin="10,140,131.8,0" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="Mark" Style="{StaticResource Standart}"  Margin="0,141,13.8,0" TextWrapping="Wrap" Text="0" TextAlignment="Center" Height="20" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Right"/>
+                    <TextBlock Style="{StaticResource Standart}"  Text="Review" Margin="10,165,134.373,36"/>
+                    <ScrollViewer Margin="10,185,10,0" Height="100" Width="280" VerticalAlignment="Top">
                         <TextBox 
                             x:Name="Review" 
                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -65,8 +67,8 @@
                     <Button  HorizontalAlignment="Left" Click="StatisticBook_Click" Background="White" BorderThickness="0" Margin="78,0,0,0" VerticalAlignment="Bottom" Width="34" Height="35" RenderTransformOrigin="2.441,0.371">
                         <Image Source="../resource/11.png"/>
                     </Button>
-                    <Button Content="Edit" FontWeight="Bold" FontSize="18" Height="35" Margin="131,0,93,0" VerticalAlignment="Bottom" RenderTransformOrigin="-0.634,0.466"/>
-                    <Button Content="Save" FontWeight="Bold" FontSize="18" Foreground="White" Background="Black" Height="35" Margin="223,0,1,0" VerticalAlignment="Bottom" RenderTransformOrigin="0.212,-1.236"/>
+                    <Button Content="Edit" Click="EditBook_Click" FontWeight="Bold" FontSize="18" Height="35" Margin="131,0,93,0" VerticalAlignment="Bottom" RenderTransformOrigin="-0.634,0.466"/>
+                    <Button Content="Save" Click="SaveBook_Click" FontWeight="Bold" FontSize="18" Foreground="White" Background="Black" Height="35" Margin="223,0,1,0" VerticalAlignment="Bottom" RenderTransformOrigin="0.212,-1.236"/>
                 </Grid>
             </StackPanel>
         </StackPanel>
