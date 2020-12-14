@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookDiary.PL"
         mc:Ignorable="d"
-        Title="EditBookPage" Height="400" Width="800">
+        Title="EditBookPage" Height="450" Width="340">
 
     <Window.Resources>
         <Style x:Key="StandartLabel" TargetType="Label">
@@ -49,24 +49,35 @@
             Text=""
             RenderTransformOrigin="-1.554,2.182"/>
         <Label
-            Content="Edit number of pages:"
+            Content="Edit total pages:"
             Style="{StaticResource StandartLabel}"
             Margin="10,131,0,0"
             RenderTransformOrigin="0.44,2.919"/>
         <TextBox
-            x:Name="NumberOfPages"
+            x:Name="TotalPages"
             Style="{StaticResource StandartTextBox}"
             Margin="10,167,0,0"
             RenderTransformOrigin="-1.554,2.182"/>
         <Label
-            Content="Add of number read pages:"
+            Content="Today read pages:"
             Style="{StaticResource StandartLabel}"
             Margin="10,200,0,0"
             RenderTransformOrigin="0.44,2.919"/>
         <TextBox
-            x:Name="NumberOfReadPages"
+            x:Name="TodayReadPages"
             Style="{StaticResource StandartTextBox}"
             Margin="10,245,0,0"
+            Text=""
+            RenderTransformOrigin="-1.554,2.182"/>
+        <Label
+            Content="Add mark:"
+            Style="{StaticResource StandartLabel}"
+            Margin="10,275,0,0"
+            RenderTransformOrigin="0.44,2.919"/>
+        <TextBox
+            x:Name="Mark"
+            Style="{StaticResource StandartTextBox}"
+            Margin="10,310,0,0"
             Text=""
             RenderTransformOrigin="-1.554,2.182"/>
         <Button
@@ -79,6 +90,6 @@
             Width="126"
             Height="30"
             Click="ButtonEdit_Click" 
-            Margin="334,0,333.333,9.667"/>
+            Margin="100,0,120,9.667"/>
     </Grid>
 </Window>

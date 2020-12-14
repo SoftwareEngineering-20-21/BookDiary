@@ -2,6 +2,7 @@
 using System.Windows;
 using BookDiary.BLL.DTO;
 using BookDiary.BLL.Interfaces;
+using BookDiary.DAL.Entities;
 using Ninject;
 
 namespace BookDiary.PL
@@ -36,13 +37,30 @@ namespace BookDiary.PL
         }
         private void EditBook_Click(object sender, RoutedEventArgs e)
         {
-            EditBookPage eb = new EditBookPage();
+            EditBookPage eb = new EditBookPage(this.book.Title, this.book.Author, Convert.ToString(this.book.TotalPages), this);
+
             eb.Show();
 
         }
         private void SaveBook_Click(object sender, RoutedEventArgs e)
         {
+            int ttlpages= Convert.ToInt32(totalPages.Text);
+            int readpages = Convert.ToInt32(readPages.Text);
+            if (readpages != ttlpages)
+            {
+                book.Status = BookStatus.InProgress;
+            }
+            else {
+                book.Status = BookStatus.Completed;
+            }
+            book.Title = title.Text;
+            book.Author = author.Text;
+            book.TotalPages = ttlpages;
+            book.ReadPages = readpages;
+            book.Mark = Convert.ToInt32(Mark.Text);
+            book.Review = Review.Text;
 
+            bookService.UpdateBook(book);
         }
         private void NotificationBook_Click(object sender, RoutedEventArgs e)
         {
