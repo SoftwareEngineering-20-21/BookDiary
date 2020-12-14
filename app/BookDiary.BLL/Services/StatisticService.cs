@@ -21,7 +21,7 @@ namespace BookDiary.BLL.Services
 
         public void CreateStatistic(StatisticDTO statisticDto)
         {
-            var stat = Database.Statistics.Get().FirstOrDefault(x => x.Day == statisticDto.Day);
+            var stat = Database.Statistics.Get().FirstOrDefault(x => x.Day == statisticDto.Day && x.BookId==statisticDto.BookId);
             if (stat==null)
             {
                 Statistic statistic = new Statistic
