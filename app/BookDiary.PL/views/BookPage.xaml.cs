@@ -33,6 +33,7 @@ namespace BookDiary.PL
             {
                 statisticService.CreateStatistic(new StatisticDTO
                 {
+                    BookId = book.Id,
                     Day = DateTimeOffset.Now.Date,
                     OldPages = 0,
                     NewPages = 0
