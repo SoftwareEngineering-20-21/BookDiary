@@ -14,6 +14,10 @@
             <Setter Property="FontFamily" Value="Times New Roman"/>
             <Setter Property="FontSize" Value="18"/>
         </Style>
+        <Style x:Key="Text" TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
     </Window.Resources>
 
     <Grid>
@@ -38,19 +42,20 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Style="{StaticResource Standart}" Text="Total number of pages" Margin="10,15,134.373,284"/>
-                    <TextBlock x:Name="totalPages" Style="{StaticResource Standart}"  Margin="0,16,14,0" Text="0" TextAlignment="Center" Width="Auto" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                    <TextBox x:Name="totalPages" BorderThickness="0" BorderBrush="DodgerBlue"  Style="{StaticResource Text}" IsReadOnly="True" Margin="0,16,14,0" Text="0" TextAlignment="Center" Width="Auto" Height="25" VerticalAlignment="Top" HorizontalAlignment="Right"/>
                     <TextBlock Style="{StaticResource Standart}" Text="Author" Margin="10,48,134.373,254"/>
-                    <TextBlock x:Name="author" Style="{StaticResource Standart}"  Margin="189,48,14,0" Text="" TextAlignment="Center" Height="20" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Right"/>
+                    <TextBox x:Name="author" BorderThickness="0" BorderBrush="DodgerBlue" Style="{StaticResource Text}" IsReadOnly="True" Margin="0,48,14,0" Text="" TextAlignment="Center" Height="25" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Right"/>
                     <TextBlock Style="{StaticResource Standart}"  Text="Number of read pages" Margin="10,80,134.373,0" VerticalAlignment="Top"/>
-                    <TextBlock x:Name="readPages" Style="{StaticResource Standart}"  Margin="189,80,14,0" TextWrapping="Wrap" Text="0" TextAlignment="Center" Height="20" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Right"/>
+                    <TextBox x:Name="readPages" BorderThickness="0" BorderBrush="DodgerBlue"  Style="{StaticResource Text}" IsReadOnly="True" Margin="189,80,14,0" TextWrapping="Wrap" Text="0" TextAlignment="Center" Height="25" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Right"/>
                     <TextBlock Style="{StaticResource Standart}"  Text="Today read pages" Margin="10,114,134.373,0" VerticalAlignment="Top"/>
-                    <TextBlock x:Name="todayReadPages" Style="{StaticResource Standart}"  Margin="189,114,14,0" TextWrapping="Wrap" Text="0" TextAlignment="Center" Height="20" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Right"/>
+                    <TextBox x:Name="todayReadPages" BorderThickness="0" BorderBrush="DodgerBlue"  Style="{StaticResource Text}" IsReadOnly="True" Margin="189,114,14,0" TextWrapping="Wrap" Text="0" TextAlignment="Center" Height="25" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Right"/>
                     <TextBlock Style="{StaticResource Standart}"  Text="Mark" Margin="10,140,131.8,0" VerticalAlignment="Top"/>
-                    <TextBlock x:Name="Mark" Style="{StaticResource Standart}"  Margin="0,141,13.8,0" TextWrapping="Wrap" Text="0" TextAlignment="Center" Height="20" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Right"/>
+                    <TextBox x:Name="Mark" BorderThickness="0" BorderBrush="DodgerBlue"  Style="{StaticResource Text}" IsReadOnly="True" Margin="0,141,13.8,0" TextWrapping="Wrap" Text="0" TextAlignment="Center" Height="25" VerticalAlignment="Top" Width="Auto" HorizontalAlignment="Right"/>
                     <TextBlock Style="{StaticResource Standart}"  Text="Review" Margin="10,165,134.373,36"/>
                     <ScrollViewer Margin="10,185,10,0" Height="100" Width="280" VerticalAlignment="Top">
                         <TextBox 
                             x:Name="Review" 
+                            IsReadOnly="True"
                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                             ScrollViewer.VerticalScrollBarVisibility="Auto"
                             FontSize="18" FontFamily="Times New Roman" 
@@ -58,7 +63,8 @@
                             TextWrapping="Wrap"
                             Text="..."
                         />
-                    </ScrollViewer><Button HorizontalAlignment="Left" Click="DeleteBook_Click" Background="White" VerticalAlignment="Bottom" BorderThickness="0" Width="34" Height="35">
+                    </ScrollViewer>
+                    <Button HorizontalAlignment="Left" Click="DeleteBook_Click" Background="White" VerticalAlignment="Bottom" BorderThickness="0" Width="34" Height="35">
                         <Image Source="../resource/delete-icon.png" Height="31" Width="29"/>
                     </Button>
                     <Button  HorizontalAlignment="Left" Margin="39,0,0,0" Background="White" BorderThickness="0" VerticalAlignment="Bottom" Width="34" Height="35" Click="NotificationBook_Click">
@@ -68,7 +74,7 @@
                         <Image Source="../resource/11.png"/>
                     </Button>
                     <Button Content="Edit" Click="EditBook_Click" FontWeight="Bold" FontSize="18" Height="35" Margin="131,0,93,0" VerticalAlignment="Bottom" RenderTransformOrigin="-0.634,0.466"/>
-                    <Button Content="Save" Click="SaveBook_Click" FontWeight="Bold" FontSize="18" Foreground="White" Background="Black" Height="35" Margin="223,0,1,0" VerticalAlignment="Bottom" RenderTransformOrigin="0.212,-1.236"/>
+                    <Button Name="Save" Content="Save" Click="SaveBook_Click" FontWeight="Bold" FontSize="18" Foreground="White" Background="Black" Height="35" Margin="223,0,1,0" VerticalAlignment="Bottom" RenderTransformOrigin="0.212,-1.236"/>
                 </Grid>
             </StackPanel>
         </StackPanel>
