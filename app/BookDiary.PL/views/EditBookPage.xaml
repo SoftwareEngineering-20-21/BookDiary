@@ -78,7 +78,7 @@
             x:Name="Mark"
             Style="{StaticResource StandartTextBox}"
             Margin="10,310,0,0"
-            Text=""
+            Text="0"
             RenderTransformOrigin="-1.554,2.182"/>
         <Button
             Content="Edit"
