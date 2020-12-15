@@ -26,9 +26,10 @@ namespace BookDiary.PL
 
         private IStatisticService statisticService;
 
-        public EditBookPage(IKernel container, BookDTO book)
+        public EditBookPage(IKernel container, BookDTO book, BookPage bp)
         {
             InitializeComponent();
+            bookPage = bp;
             bookService = container.Get<IBookService>();
             statisticService = container.Get<IStatisticService>();
             statisticService.CreateStatistic(
@@ -40,8 +41,8 @@ namespace BookDiary.PL
                     BookId = book.Id
                     
                 });
-            IEnumerable<StatisticDTO> statistics = statisticService.GetStatisticsByBookId(book.Id);
-            statistic = statistics.Where(x => x.BookId == book.Id && x.Day==DateTimeOffset.Now).ToList();
+            IEnumerable<StatisticDTO> statistics = statisticService.GetStatistics();
+            statistic = statistics.Where(x => x.BookId == book.Id && x.Day==DateTimeOffset.Now.Date).ToList();
             this.container = container;
             this.book = book;
             BookTitle.Text = book.Title;
@@ -52,17 +53,35 @@ namespace BookDiary.PL
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
+            StatisticDTO curStat = statistic.ElementAt<StatisticDTO>(0);
             bookPage.Title = BookTitle.Text;
             bookPage.totalPages.Text = TotalPages.Text;
             bookPage.author.Text = AuthorName.Text;
             
             bookPage.todayReadPages.Text = TodayReadPages.Text;
             bookPage.Mark.Text = Mark.Text;
+
+            statisticService.UpdateStatistic(new StatisticDTO
+            {
+                Id = curStat.Id,
+                Day = curStat.Day,
+                OldPages = 0,
+                NewPages = Convert.ToInt32(TodayReadPages.Text)
+            });
             int readpages = Convert.ToInt32(bookPage.readPages.Text);
 
             readpages+= Convert.ToInt32(TodayReadPages.Text);
             bookPage.readPages.Text = Convert.ToString(readpages);
-
+            bookService.UpdateBook(new BookDTO{
+                Id =book.Id,
+                Status = book.Status,
+                Title = BookTitle.Text,
+                Author = AuthorName.Text,
+                TotalPages = Convert.ToInt32(TotalPages.Text),
+                ReadPages = readpages,
+                Review = book.Review,
+                Mark = Convert.ToInt32(Mark.Text)
+            });
             this.Hide();
         }
     }

@@ -39,7 +39,7 @@ namespace BookDiary.PL
         }
         private void EditBook_Click(object sender, RoutedEventArgs e)
         {
-            EditBookPage eb = new EditBookPage(container,book);
+            EditBookPage eb = new EditBookPage(container,book,this);
             eb.Show();
 
         }
@@ -62,6 +62,7 @@ namespace BookDiary.PL
             book.Review = Review.Text;
 
             bookService.UpdateBook(book);
+            this.Hide();
         }
         private void NotificationBook_Click(object sender, RoutedEventArgs e)
         {
