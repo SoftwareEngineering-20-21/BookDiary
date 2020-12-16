@@ -247,6 +247,9 @@
     <Compile Include="views\BookStatisticPage.xaml.cs">
       <DependentUpon>BookStatisticPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="views\EditBookPage.xaml.cs">
+      <DependentUpon>EditBookPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\NotificationsPage.xaml.cs">
       <DependentUpon>NotificationsPage.xaml</DependentUpon>
     </Compile>
@@ -266,6 +269,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="views\BookStatisticPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\EditBookPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -383,7 +390,8 @@
     <Resource Include="resource\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resource\star-icon.png" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
