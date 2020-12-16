@@ -11,6 +11,10 @@ using BookDiary.DAL.Entities;
 using BookDiary.BLL.Interfaces;
 using BookDiary.BLL.DTO;
 using Ninject;
+using ToastNotifications;
+using ToastNotifications.Position;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Messages;
 
 namespace BookDiary.PL
 {
@@ -37,13 +41,31 @@ namespace BookDiary.PL
 
         private IBookService bookService;
 
+        private readonly INotificationService notificationService;
+
         UserDTO currentUser;
+
+        Notifier notifier = new Notifier(cfg =>
+        {
+            cfg.PositionProvider = new WindowPositionProvider(
+                parentWindow: Application.Current.MainWindow,
+                corner: Corner.BottomRight,
+                offsetX: 10,
+                offsetY: 10);
+
+            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+                notificationLifetime: TimeSpan.FromSeconds(3),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+
+            cfg.Dispatcher = Application.Current.Dispatcher;
+        });
 
         public HomePage(IKernel container)
         {
             this.container = container;
-            currentUser = container.Get<IUserService>().CurrentUser;
-            bookService = container.Get<IBookService>();
+            this.currentUser = container.Get<IUserService>().CurrentUser;
+            this.bookService = container.Get<IBookService>();
+            this.notificationService = container.Get<INotificationService>();
 
             InitializeComponent();
             if (currentUser != null)
@@ -52,6 +74,7 @@ namespace BookDiary.PL
             }
 
             ShowBooks();
+
         }
 
         private void ShowBooks()
@@ -76,6 +99,17 @@ namespace BookDiary.PL
 
         private void ButtonAll_Click(object sender, RoutedEventArgs e)
         {
+            IEnumerable<NotificationDTO> notifications = new List<NotificationDTO>();
+            foreach (BookDTO book in this.BooksAll)
+            {
+                notifications = notifications.Concat<NotificationDTO>(this.notificationService.GetNotifications().Where(x => x.BookId == book.Id && x.Day.Date == DateTimeOffset.Now.Date).ToList());
+            }
+
+            foreach (NotificationDTO notification in notifications)
+            {
+                this.notifier.ShowInformation(notification.Message);
+            }
+
             bookListStatus = Status.All;
             ButtonAll.Background = Brushes.LightGray;
             ButtonPlanned.Background = Brushes.White;
