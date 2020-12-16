@@ -75,7 +75,6 @@ namespace BookDiary.PL
 
             totalPages.BorderThickness = new Thickness(2);
             author.BorderThickness = new Thickness(2);
-            readPages.BorderThickness = new Thickness(2);
             todayReadPages.BorderThickness = new Thickness(2);
             Mark.BorderThickness = new Thickness(2);
             Review.BorderThickness = new Thickness(2);
@@ -95,7 +94,6 @@ namespace BookDiary.PL
 
             totalPages.BorderThickness = new Thickness(0);
             author.BorderThickness = new Thickness(0);
-            readPages.BorderThickness = new Thickness(0);
             todayReadPages.BorderThickness = new Thickness(0);
             Mark.BorderThickness = new Thickness(0);
             Review.BorderThickness = new Thickness(0);
@@ -137,7 +135,8 @@ namespace BookDiary.PL
 
         private void StatisticBook_Click(object sender, RoutedEventArgs e)
         {
-            
+            BookStatisticPage bs = new BookStatisticPage(container, book);
+            bs.Show();
         }
     }
 }
