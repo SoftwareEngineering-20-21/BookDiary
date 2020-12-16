@@ -16,6 +16,7 @@ namespace BookDiary.Tests.Mocks
         {
             this.Items = new List<T>();
         }
+
         public IEnumerable<T> Get()
         {
             return Items;
