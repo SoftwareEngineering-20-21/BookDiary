@@ -9,7 +9,11 @@
         WindowStartupLocation="Manual" 
         Left="30" Top="30">
     <Grid>
-        <Label Content="Message" FontSize="20" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top"/>
+        <StackPanel Orientation="Horizontal" Height="30" Margin="10,10,10.333,0" VerticalAlignment="Top" d:LayoutOverrides="Height">
+            <Image Source="../resource/logo.png"/>
+            <Label x:Name="LableBookTitle" FontFamily="Times New Roman" FontSize="20"/>
+        </StackPanel>
+        <Label Content="Message" FontSize="18" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top"/>
         <Label
             x:Name="ErrorLabel" 
             Content="" 
@@ -21,7 +25,7 @@
             Width="Auto" 
             Margin="113,32,0,0"
         />
-        <ScrollViewer Margin="10,70,10.333,0" Height="137" VerticalAlignment="Top" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Margin="10,84,10.333,0" Height="137" VerticalAlignment="Top" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
             <TextBox 
                 x:Name="TextBoxMessage" 
                 FontSize="18" FontFamily="Times New Roman" 

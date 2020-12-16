@@ -21,6 +21,7 @@ namespace BookDiary.PL
 
         private readonly INotificationService notificationService;
         private readonly IBookService bookService;
+        private readonly List<BookDTO> Books;
         private UserDTO currentUser;
 
         public NotificationsPage(IKernel container)
@@ -29,6 +30,7 @@ namespace BookDiary.PL
             this.notificationService = container.Get<INotificationService>();
             this.bookService = container.Get<IBookService>();
             currentUser = container.Get<IUserService>().CurrentUser;
+            Books = bookService.GetBooks().Where(x => x.UserId == currentUser.Id).ToList();
 
             InitializeComponent();
             if (currentUser != null)
@@ -41,7 +43,11 @@ namespace BookDiary.PL
 
         private void ShowNotifications()
         {
-            IEnumerable<NotificationDTO> Notifications = notificationService.GetNotifications();
+            IEnumerable<NotificationDTO> Notifications = new List<NotificationDTO>();
+            foreach(BookDTO book in Books)
+            {
+                Notifications = Notifications.Concat<NotificationDTO>(notificationService.GetNotifications().Where(x => x.BookId == book.Id).ToList());
+            }
 
             foreach (NotificationDTO notification in Notifications)
             {
@@ -115,7 +121,7 @@ namespace BookDiary.PL
             rd4.Height = new GridLength(10);
             cd1.Width = new GridLength(500);
             cd2.Width = new GridLength(10);
-            cd3.Width = new GridLength(50);
+            cd3.Width = new GridLength(100);
             this.RowDefinitions.Add(rd1);
             this.RowDefinitions.Add(rd2);
             this.RowDefinitions.Add(rd3);

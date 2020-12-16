@@ -1,20 +1,9 @@
 ﻿using Ninject;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using BookDiary.DAL.Entities;
 using BookDiary.BLL.Interfaces;
 using BookDiary.BLL.DTO;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace BookDiary.PL
 {
@@ -36,6 +25,7 @@ namespace BookDiary.PL
             this.book = book;
 
             InitializeComponent();
+            LableBookTitle.Content = book.Title;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -47,7 +37,7 @@ namespace BookDiary.PL
             {
                 if (calendarDay == null)
                 {
-                    ErrorLabel.Content = "Date is nit setted";
+                    ErrorLabel.Content = "Date is not setted";
                     throw new Exception("Date is not setted");
                 }
                 // Notification will be sent at 12 pm
