@@ -60,11 +60,18 @@ namespace BookDiary.PL
 
             IEnumerable<BookDTO> Books = bookService.GetBooks();
             BooksAll = Books.Where(x => x.UserId == currentUser.Id).ToList();
-            BooksInProgress = BooksAll.Where(x => x.UserId == currentUser.Id && x.Status == BookStatus.InProgress).ToList();
-            BooksPlanned = BooksAll.Where(x => x.UserId == currentUser.Id && x.Status == BookStatus.Planned).ToList();
-            BooksCompleted = BooksAll.Where(x => x.UserId == currentUser.Id && x.Status == BookStatus.Completed).ToList();
+            BooksInProgress = BooksAll.Where(x => x.Status == BookStatus.InProgress).ToList();
+            BooksPlanned = BooksAll.Where(x => x.Status == BookStatus.Planned).ToList();
+            BooksCompleted = BooksAll.Where(x => x.Status == BookStatus.Completed).ToList();
 
             ButtonAll.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+        }
+
+        private void ShowBookPage(BookDTO book)
+        {
+            BookPage bp = new BookPage(container, book);
+            bp.Show();
+            bp.Closed += new EventHandler((object s, EventArgs ee) => { ShowBooks(); });
         }
 
         private void ButtonAll_Click(object sender, RoutedEventArgs e)
@@ -84,24 +91,6 @@ namespace BookDiary.PL
             }
         }
 
-        private void ShowBookPage(BookDTO book)
-        {
-            BookPage bp = new BookPage(container, book);
-            bp.Show();
-        }
-
-        private void ButtonAll_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (bookListStatus != Status.All)
-                ButtonAll.Background = Brushes.LightBlue;
-        }
-
-        private void ButtonAll_MouseLeave(object sender, MouseEventArgs e)
-        {
-            if (bookListStatus != Status.All)
-                ButtonAll.Background = Brushes.White;
-        }
-
         private void ButtonPlanned_Click(object sender, RoutedEventArgs e)
         {
             bookListStatus = Status.Planned;
@@ -112,18 +101,11 @@ namespace BookDiary.PL
 
             booksWrap.Children.Clear();
             foreach (BookDTO book in BooksPlanned)
-                booksWrap.Children.Add(new BookIcon(book));
-        }
-        private void ButtonPlanned_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (bookListStatus != Status.Planned)
-                ButtonPlanned.Background = Brushes.LightBlue;
-        }
-
-        private void ButtonPlanned_MouseLeave(object sender, MouseEventArgs e)
-        {
-            if (bookListStatus != Status.Planned)
-                ButtonPlanned.Background = Brushes.White;
+            {
+                BookIcon bi = new BookIcon(book);
+                bi.Click += (x, y) => ShowBookPage(book);
+                booksWrap.Children.Add(bi);
+            }
         }
 
         private void ButtonInProgress_Click(object sender, RoutedEventArgs e)
@@ -136,20 +118,13 @@ namespace BookDiary.PL
 
             booksWrap.Children.Clear();
             foreach (BookDTO book in BooksInProgress)
-                booksWrap.Children.Add(new BookIcon(book));
+            {
+                BookIcon bi = new BookIcon(book);
+                bi.Click += (x, y) => ShowBookPage(book);
+                booksWrap.Children.Add(bi);
+            }
         }
 
-        private void ButtonInProgress_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (bookListStatus != Status.InProgress)
-                ButtonInProgress.Background = Brushes.LightBlue;
-        }
-
-        private void ButtonInProgress_MouseLeave(object sender, MouseEventArgs e)
-        {
-            if (bookListStatus != Status.InProgress)
-                ButtonInProgress.Background = Brushes.White;
-        }
         private void ButtonCompleted_Click(object sender, RoutedEventArgs e)
         {
             bookListStatus = Status.Comleted;
@@ -160,19 +135,11 @@ namespace BookDiary.PL
 
             booksWrap.Children.Clear();
             foreach (BookDTO book in BooksCompleted)
-                booksWrap.Children.Add(new BookIcon(book));
-        }
-
-        private void ButtonCompleted_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (bookListStatus != Status.Comleted)
-                ButtonCompleted.Background = Brushes.LightBlue;
-        }
-
-        private void ButtonCompleted_MouseLeave(object sender, MouseEventArgs e)
-        {
-            if (bookListStatus != Status.Comleted)
-                ButtonCompleted.Background = Brushes.White;
+            {
+                BookIcon bi = new BookIcon(book);
+                bi.Click += (x, y) => ShowBookPage(book);
+                booksWrap.Children.Add(bi);
+            }
         }
 
         private void ButtonNotifications_Click(object sender, RoutedEventArgs e)
@@ -182,34 +149,13 @@ namespace BookDiary.PL
             this.Hide();
         }
 
-        private void ButtonNotifications_MouseEnter(object sender, MouseEventArgs e)
-        {
-            ButtonNotifications.Background = Brushes.LightBlue;
-        }
-
-        private void ButtonNotifications_MouseLeave(object sender, MouseEventArgs e)
-        {
-            ButtonNotifications.Background = Brushes.White;
-        }
-
         private void ButtonStatistics_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            StatisticsPage sp = new StatisticsPage();
+            StatisticsPage sp = new StatisticsPage(container);
             sp.Show();
             this.Hide();
-            */
         }
 
-        private void ButtonStatistics_MouseEnter(object sender, MouseEventArgs e)
-        {
-            ButtonStatistics.Background = Brushes.LightBlue;
-        }
-
-        private void ButtonStatistics_MouseLeave(object sender, MouseEventArgs e)
-        {
-            ButtonStatistics.Background = Brushes.White;
-        }
 
         private void ButtonSignIn_Click(object sender, RoutedEventArgs e)
         {
@@ -259,6 +205,74 @@ namespace BookDiary.PL
                 MessageBox.Show("Book " + titleSearched + " is not found");
             }
         }
+
+        private void ButtonAll_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (bookListStatus != Status.All)
+                ButtonAll.Background = Brushes.LightBlue;
+        }
+
+        private void ButtonAll_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (bookListStatus != Status.All)
+                ButtonAll.Background = Brushes.White;
+        }
+
+        private void ButtonPlanned_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (bookListStatus != Status.Planned)
+                ButtonPlanned.Background = Brushes.LightBlue;
+        }
+
+        private void ButtonPlanned_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (bookListStatus != Status.Planned)
+                ButtonPlanned.Background = Brushes.White;
+        }
+
+        private void ButtonInProgress_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (bookListStatus != Status.InProgress)
+                ButtonInProgress.Background = Brushes.LightBlue;
+        }
+
+        private void ButtonInProgress_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (bookListStatus != Status.InProgress)
+                ButtonInProgress.Background = Brushes.White;
+        }
+
+        private void ButtonCompleted_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (bookListStatus != Status.Comleted)
+                ButtonCompleted.Background = Brushes.LightBlue;
+        }
+
+        private void ButtonCompleted_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (bookListStatus != Status.Comleted)
+                ButtonCompleted.Background = Brushes.White;
+        }
+
+        private void ButtonNotifications_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ButtonNotifications.Background = Brushes.LightBlue;
+        }
+
+        private void ButtonNotifications_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ButtonNotifications.Background = Brushes.White;
+        }
+
+        private void ButtonStatistics_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ButtonStatistics.Background = Brushes.LightBlue;
+        }
+
+        private void ButtonStatistics_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ButtonStatistics.Background = Brushes.White;
+        }
     }
 
     public class BookIcon: Button
@@ -266,6 +280,7 @@ namespace BookDiary.PL
         private Image image;
         private TextBlock textBlock;
         private Grid grid;
+        private StackPanel imageStack;
 
         public BookIcon(BookDTO book)
         {
@@ -287,13 +302,13 @@ namespace BookDiary.PL
             ColumnDefinition cd4 = new ColumnDefinition();
 
             rd1.Height = new GridLength(10);
-            rd2.Height = new GridLength(200);
+            rd2.Height = new GridLength(190);
             rd3.Height = new GridLength(10);
-            rd4.Height = new GridLength(20);
+            rd4.Height = new GridLength(30);
             rd5.Height = new GridLength(10);
             cd1.Width = new GridLength(10);
-            cd2.Width = new GridLength(150);
-            cd3.Width = new GridLength(20);
+            cd2.Width = new GridLength(120);
+            cd3.Width = new GridLength(50);
             cd4.Width = new GridLength(10);
             grid.RowDefinitions.Add(rd1);
             grid.RowDefinitions.Add(rd2);
@@ -317,7 +332,7 @@ namespace BookDiary.PL
             textBlock = new TextBlock();
             textBlock.Text = book.Title;
             textBlock.FontFamily = new FontFamily("Times New Roman");
-            textBlock.FontSize = 14;
+            textBlock.FontSize = 16;
             textBlock.VerticalAlignment = VerticalAlignment.Center;
             textBlock.HorizontalAlignment = HorizontalAlignment.Left;
 
@@ -325,13 +340,23 @@ namespace BookDiary.PL
             Grid.SetColumn(textBlock, 1);
             grid.Children.Add(textBlock);
 
+            imageStack = new StackPanel();
+            imageStack.Orientation = Orientation.Horizontal;
+            for (int i = 0; i < book.Mark; i++)
+            {
+                Image star = new Image();
+                star.Source = new BitmapImage(new Uri("../resource/star-icon.png", UriKind.Relative));
+                star.Width = 10;
+                imageStack.Children.Add(star);
+            }
+            Grid.SetRow(imageStack, 2);
+            Grid.SetColumn(imageStack, 2);
+            grid.Children.Add(imageStack);
+
             if (book.Status == BookStatus.Completed)
             {
                 Image isCompleted = new Image();
                 isCompleted.Source = new BitmapImage(new Uri("../resource/done-icon-3.png", UriKind.Relative));
-                isCompleted.HorizontalAlignment = HorizontalAlignment.Center;
-                isCompleted.VerticalAlignment = VerticalAlignment.Center;
-                isCompleted.HorizontalAlignment = HorizontalAlignment.Center;
 
                 Grid.SetRow(isCompleted, 3);
                 Grid.SetColumn(isCompleted, 2);

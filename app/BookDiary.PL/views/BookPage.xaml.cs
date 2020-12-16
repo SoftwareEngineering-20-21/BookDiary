@@ -60,26 +60,24 @@ namespace BookDiary.PL
         private void DeleteBook_Click(object sender, RoutedEventArgs e)
         {
             bookService.DeleteBook(book);
-            this.Hide();
+            this.Close();
         }
         private void EditBook_Click(object sender, RoutedEventArgs e)
         {
-            //EditBookPage eb = new EditBookPage(this.book.Title, this.book.Author, Convert.ToString(this.book.TotalPages), this);
-
-            //eb.Show();
             totalPages.IsReadOnly = false;
             author.IsReadOnly = false;
             todayReadPages.IsReadOnly = false;
-            Mark.IsReadOnly = false;
-            Review.IsReadOnly = false;
+            if (book.Status == BookStatus.Completed) Mark.IsReadOnly = false;
+            if (book.Status == BookStatus.Completed) Review.IsReadOnly = false;
 
             totalPages.BorderThickness = new Thickness(2);
             author.BorderThickness = new Thickness(2);
             todayReadPages.BorderThickness = new Thickness(2);
-            Mark.BorderThickness = new Thickness(2);
-            Review.BorderThickness = new Thickness(2);
+            if (book.Status == BookStatus.Completed) Mark.BorderThickness = new Thickness(2);
+            if (book.Status == BookStatus.Completed) Review.BorderThickness = new Thickness(2);
 
             pages = Convert.ToInt32(todayReadPages.Text);
+            todayReadPages.Text = "0";
             Save.IsEnabled = true;
 
         }
@@ -100,21 +98,21 @@ namespace BookDiary.PL
 
             int ttlpages = Convert.ToInt32(totalPages.Text);
             int readpages = Convert.ToInt32(readPages.Text);
-            if (Convert.ToInt32(todayReadPages.Text) != pages)
-            {
-                readpages += Convert.ToInt32(todayReadPages.Text);
-                todayReadPages.Text = Convert.ToString(Convert.ToInt32(todayReadPages.Text) + statistic.NewPages);
-                statistic.NewPages = Convert.ToInt32(todayReadPages.Text);
-                statistic.Day = DateTimeOffset.Now.Date;
-                statisticService.UpdateStatistic(statistic);
-            }
             
-            if (readpages != ttlpages)
+            readpages += Convert.ToInt32(todayReadPages.Text);
+            todayReadPages.Text = Convert.ToString(Convert.ToInt32(todayReadPages.Text) + statistic.NewPages);
+            statistic.NewPages = Convert.ToInt32(todayReadPages.Text);
+            statistic.Day = DateTimeOffset.Now.Date;
+            statisticService.UpdateStatistic(statistic);
+            
+            if (readpages > 0 && readpages < ttlpages)
             {
                 book.Status = BookStatus.InProgress;
             }
-            else {
+            else if (readpages >= ttlpages)
+            {
                 book.Status = BookStatus.Completed;
+                readpages = ttlpages;
             }
             book.Title = title.Text;
             book.Author = author.Text;

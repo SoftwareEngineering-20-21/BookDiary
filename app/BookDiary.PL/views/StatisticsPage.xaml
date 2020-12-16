@@ -3,10 +3,200 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BookDiary.PL"
+        xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"  
         mc:Ignorable="d"
-        Title="StatisticsPage" Height="450" Width="800">
+        Title="StatisticsPage" Height="600" Width="1000"
+        WindowStartupLocation="Manual" 
+        Left="10" Top="10">
+    <Window.Resources>
+
+        <Style x:Key="Standart" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="Status" TargetType="Button">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border 
+                                Margin="{TemplateBinding Margin}"
+                                Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ControlTemplate x:Key="CoolButton" TargetType="{x:Type Button}">
+            <Border 
+                    Margin="{TemplateBinding Margin}"
+                    Background="{TemplateBinding Background}" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    Padding="{TemplateBinding Padding}">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </ControlTemplate>
+
+        <Style x:Key="Page" TargetType="Button">
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template" Value="{StaticResource CoolButton}"/>
+        </Style>
+
+    </Window.Resources>
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock 
+                Style="{StaticResource Standart}"
+                FontWeight="Bold"
+                Grid.Row="1" Grid.Column="1" 
+                FontSize="40"
+                Text="BooksDiary" 
+        />
+
+        <StackPanel
+                Grid.Row="5" Grid.Column="1"
+                Orientation="Vertical">
+            <TextBlock 
+                    Style="{StaticResource Standart}"
+                    Text="Time Period"
+                    Foreground="DimGray"
+                    FontSize="20"
+            />
+            <Button
+                    x:Name="ButtonWeek"
+                    Style="{StaticResource Status}"
+                    Content="  Week"
+                    Click="ButtonWeek_Click"
+                    MouseEnter="ButtonWeek_MouseEnter"
+                    MouseLeave="ButtonWeek_MouseLeave"
+            />
+            <Button
+                    x:Name="ButtonMonth"
+                    Style="{StaticResource Status}"
+                    Content="  Month"
+                    Click="ButtonMonth_Click"
+                    MouseEnter="ButtonMonth_MouseEnter"
+                    MouseLeave="ButtonMonth_MouseLeave"
+            />
+            <Button
+                    x:Name="ButtonYear"
+                    Style="{StaticResource Status}"
+                    Content="  Year"
+                    Click="ButtonYear_Click"
+                    MouseEnter="ButtonYear_MouseEnter"
+                    MouseLeave="ButtonYear_MouseLeave"
+            />
+            <Button
+                    x:Name="ButtonWhole"
+                    Style="{StaticResource Status}"
+                    Content="  The Whole Time"
+                    Click="ButtonWhole_Click"
+                    MouseEnter="ButtonWhole_MouseEnter"
+                    MouseLeave="ButtonWhole_MouseLeave"
+            />
+        </StackPanel>
+
+        <Grid
+                Grid.Row="1" Grid.Column="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel 
+                    Grid.Column="0"/>
+            <Button 
+                    x:Name="ButtonHome"
+                    Grid.Column="1"
+                    Style="{StaticResource Page}"
+                    Content="Home"
+                    Click="ButtonHome_Click"
+                    MouseEnter="ButtonHome_MouseEnter"
+                    MouseLeave="ButtonHome_MouseLeave"
+            />
+            <Button 
+                    x:Name="ButtonNotifications"
+                    Grid.Column="2"
+                    Style="{StaticResource Page}"
+                    Content="Notifications"
+                    Click="ButtonNotifications_Click"
+                    MouseEnter="ButtonNotifications_MouseEnter"
+                    MouseLeave="ButtonNotifications_MouseLeave"
+            />
+            <Button 
+                    x:Name="ButtonStatistics"
+                    Style="{StaticResource Page}"
+                    Background="LightGray"
+                    Grid.Column="3"
+                    Content="Statistics"
+            />
+        </Grid>
+
+        <StackPanel 
+                Orientation="Horizontal"
+                Grid.Row="1" Grid.Column="5">
+            <Label 
+                Name="UserLabel"
+                Content=""
+                VerticalContentAlignment="Center" 
+                FontFamily="Times New Roman"
+                Visibility="Visible" 
+                FontSize="20"
+                Width="140"
+                Height="40" Canvas.Top="10"/>
+            <Image 
+                    Source="../resource/user-icon.png" 
+                    Height="50"
+            />
+        </StackPanel>
+
+        <DVC:Chart
+                Grid.Row="2" Grid.Column="3"
+                Grid.RowSpan="4" Grid.ColumnSpan="4"
+                BorderThickness="0">
+            <DVC:ColumnSeries
+                    x:Name="Chart"
+                    Title="ReadPages"
+                    IndependentValueBinding="{Binding Path=Key}"    
+                    DependentValueBinding="{Binding Path=Value}"
+            />
+        </DVC:Chart>
     </Grid>
 </Window>

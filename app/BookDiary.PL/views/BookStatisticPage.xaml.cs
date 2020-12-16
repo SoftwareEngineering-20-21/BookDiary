@@ -37,12 +37,13 @@ namespace BookDiary.PL
 
         private void ShowStatistic()
         {
-            KeyValuePair<DateTime, int>[] Data = new KeyValuePair<DateTime, int> [Statistic.Count()];
+            Statistic.OrderBy(x => x.Day);
+            KeyValuePair<string, int>[] Data = new KeyValuePair<string, int> [Statistic.Count()];
             int i = 0;
             foreach(StatisticDTO statistic in Statistic)
             {
-                DateTime day = statistic.Day.DateTime;
-                Data[i] = new KeyValuePair<DateTime, int>(day, statistic.NewPages);
+                Data[i] = new KeyValuePair<string, int>(statistic.Day.DateTime.ToShortDateString(), statistic.NewPages);
+                i++;
             }
 
             ((ColumnSeries)Chart).ItemsSource = Data;

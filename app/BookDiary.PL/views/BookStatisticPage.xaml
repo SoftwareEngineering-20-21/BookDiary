@@ -3,8 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BookDiary.PL"
-        xmlns:DV="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"  
         xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"  
         mc:Ignorable="d"
         Title="BookStatisticPage" Height="400" Width="600"
@@ -34,7 +32,8 @@
             />
         </StackPanel>
         <DVC:Chart
-                Grid.Row="3" Grid.Column="2">
+                Grid.Row="3" Grid.Column="2"
+                BorderThickness="0">
             <DVC:ColumnSeries
                     x:Name="Chart"
                     Title="Read Pages" 
@@ -42,8 +41,6 @@
                     DependentValueBinding="{Binding Path=Value}"
                    
             />
-
-
         </DVC:Chart>
 
     </Grid>

@@ -85,11 +85,9 @@ namespace BookDiary.PL
 
         private void ButtonStatistics_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            StatisticsPage sp = new StatisticsPage();
+            StatisticsPage sp = new StatisticsPage(container);
             sp.Show();
             this.Hide();
-            */
         }
 
         private void ButtonStatistics_MouseEnter(object sender, MouseEventArgs e)
@@ -113,7 +111,6 @@ namespace BookDiary.PL
         Label dateLabel;
         Label titleLabel;
         Border border;
-        BookDTO currentBook;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NotificationIcon"/> class.
