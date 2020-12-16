@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookDiary.DAL", "BookDiary.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookDiary.PL", "BookDiary.PL\BookDiary.PL.csproj", "{AA0B1C72-B317-49FA-B2DB-49C7E24F1566}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookDiary.Tests", "BookDiary.Tests\BookDiary.Tests.csproj", "{7C016E2D-4FA1-4B45-BDCB-8F31E3A573A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{AA0B1C72-B317-49FA-B2DB-49C7E24F1566}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA0B1C72-B317-49FA-B2DB-49C7E24F1566}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{AA0B1C72-B317-49FA-B2DB-49C7E24F1566}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{7C016E2D-4FA1-4B45-BDCB-8F31E3A573A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C016E2D-4FA1-4B45-BDCB-8F31E3A573A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C016E2D-4FA1-4B45-BDCB-8F31E3A573A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C016E2D-4FA1-4B45-BDCB-8F31E3A573A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
