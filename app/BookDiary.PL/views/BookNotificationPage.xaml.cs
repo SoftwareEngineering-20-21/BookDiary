@@ -42,7 +42,6 @@ namespace BookDiary.PL
                 }
                 // Notification will be sent at 12 pm
                 DateTimeOffset day = new DateTimeOffset((DateTime)calendarDay, new TimeSpan(12, 0, 0));
-                
                 notificationService.CreateNotification(
                    new NotificationDTO
                    {
