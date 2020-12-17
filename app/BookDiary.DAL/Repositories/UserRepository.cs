@@ -14,7 +14,14 @@ namespace BookDiary.DAL.Repositories
         private AppDbContext db;
 
         private readonly DbSet<User> dbSet;
-
+        /*
+        public UserRepository()
+        {
+            this.db = new AppDbContext();
+            dbSet = db.Set<User>();
+            dbSet.Load();
+        }
+        */
         public UserRepository(AppDbContext context)
         {
             this.db = context;
